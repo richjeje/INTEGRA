@@ -5,11 +5,36 @@ document.body.classList.add('enhanced');
 // Keep content server-rendered. JavaScript enhances navigation and selection only.
 const menu = document.querySelector<HTMLButtonElement>('.menu-toggle')!;
 const navigation = document.querySelector<HTMLElement>('#main-nav')!;
-function closeMenu() { menu.setAttribute('aria-expanded', 'false'); navigation.classList.remove('open'); }
-menu.addEventListener('click', () => { const open = menu.getAttribute('aria-expanded') !== 'true'; menu.setAttribute('aria-expanded', String(open)); navigation.classList.toggle('open', open); });
+const mobileNavigation = matchMedia('(max-width: 1024px)');
+const menuBackdrop = document.querySelector<HTMLElement>('.menu-backdrop')!;
+const backgroundContent = all<HTMLElement>('main, .home-link, .header-location');
+function closeMenu() {
+  menu.setAttribute('aria-expanded', 'false');
+  menu.setAttribute('aria-label', 'Abrir menú');
+  navigation.classList.remove('open');
+  document.body.classList.remove('menu-is-open');
+  backgroundContent.forEach(element => element.inert = false);
+}
+menu.addEventListener('click', () => {
+  if (menu.getAttribute('aria-expanded') === 'true') { closeMenu(); return; }
+  menu.setAttribute('aria-expanded', 'true');
+  menu.setAttribute('aria-label', 'Cerrar menú');
+  navigation.classList.add('open');
+  document.body.classList.add('menu-is-open');
+  backgroundContent.forEach(element => element.inert = true);
+  navigation.querySelector<HTMLAnchorElement>('a')?.focus({preventScroll:true});
+});
+menuBackdrop.addEventListener('click', () => { closeMenu(); menu.focus(); });
+document.addEventListener('keydown', event => {
+  if (event.key !== 'Tab' || menu.getAttribute('aria-expanded') !== 'true') return;
+  const links = all<HTMLAnchorElement>('#main-nav a');
+  const last = links[links.length - 1];
+  if (event.shiftKey && document.activeElement === menu) { event.preventDefault(); last.focus(); }
+  else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); menu.focus(); }
+});
 document.addEventListener('keydown', event => { if (event.key === 'Escape' && menu.getAttribute('aria-expanded') === 'true') { closeMenu(); menu.focus(); } });
 document.addEventListener('click', event => { if (event.target instanceof Node && !document.querySelector('.site-header')!.contains(event.target)) closeMenu(); });
-matchMedia('(max-width: 768px)').addEventListener('change', () => closeMenu());
+mobileNavigation.addEventListener('change', () => { const wasOpen = menu.getAttribute('aria-expanded') === 'true'; closeMenu(); if (wasOpen) navigation.querySelector<HTMLAnchorElement>('a')?.focus({preventScroll:true}); });
 
 const whatsapp = document.querySelector<HTMLAnchorElement>('#whatsapp')!;
 const contextLabel = document.querySelector<HTMLElement>('#contact-context')!;
@@ -55,41 +80,110 @@ const journey = document.querySelector<HTMLElement>('[data-journey]');
 if (journey) {
   const journeyTabs = all<HTMLButtonElement>('[data-journey-step]');
   const journeyFrames = all<HTMLElement>('[data-journey-frame]');
-  const journeyProgress = journey.querySelector<HTMLElement>('[data-journey-progress]')!;
+  const timeline = journey.querySelector<HTMLElement>('.journey-timeline')!;
+  const stage = journey.querySelector<HTMLElement>('.journey-stage')!;
+  const mobile = matchMedia('(max-width: 850px)');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const count = journeyTabs.length;
   let activeJourney = 0;
-  let journeyTimer: number | undefined;
-  const journeyReducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-  const stopJourney = () => { if (journeyTimer !== undefined) window.clearInterval(journeyTimer); journeyTimer = undefined; };
-  const selectJourney = (index: number) => {
-    activeJourney = index;
-    journeyTabs.forEach((tab, tabIndex) => {
-      const active = tabIndex === index;
-      tab.setAttribute('aria-selected', String(active));
-      tab.tabIndex = active ? 0 : -1;
-    });
-    journeyFrames.forEach((frame, frameIndex) => {
-      const active = frameIndex === index;
-      frame.classList.toggle('is-active', active);
-      frame.setAttribute('aria-hidden', String(!active));
-    });
-    const denominator = Math.max(journeyTabs.length - 1, 1);
-    journeyProgress.style.width = `${index * (100 / denominator)}%`;
-  };
-  const startJourney = () => {
-    stopJourney();
-    if (!journeyTabs.length || document.hidden || journeyReducedMotion.matches) return;
-    journeyTimer = window.setInterval(() => selectJourney((activeJourney + 1) % journeyTabs.length), 2000);
-  };
-  journeyTabs.forEach((tab, index) => {
-    tab.addEventListener('click', () => { selectJourney(index); startJourney(); });
-    tab.addEventListener('keydown', event => {
-      const next = event.key === 'ArrowRight' ? (index + 1) % journeyTabs.length : event.key === 'ArrowLeft' ? (index + journeyTabs.length - 1) % journeyTabs.length : event.key === 'Home' ? 0 : event.key === 'End' ? journeyTabs.length - 1 : null;
-      if (next !== null) { event.preventDefault(); journeyTabs[next].focus(); selectJourney(next); startJourney(); }
-    });
+  let timer: number | undefined;
+  let settle: number | undefined;
+  let moving = false;
+  let dragging = false;
+  const copies = (where: 'before' | 'after') => journeyTabs.map((tab, index) => {
+    const copy = tab.cloneNode(true) as HTMLButtonElement;
+    copy.removeAttribute('id');
+    copy.removeAttribute('role');
+    copy.removeAttribute('aria-controls');
+    copy.removeAttribute('data-journey-step');
+    copy.setAttribute('aria-hidden', 'true');
+    copy.tabIndex = -1;
+    copy.dataset.journeyCopy = String(index);
+    if (where === 'after') timeline.append(copy);
+    return copy;
   });
-  startJourney();
-          journeyReducedMotion.addEventListener('change', startJourney);
-  document.addEventListener('visibilitychange', () => document.hidden ? stopJourney() : startJourney());
+  const before = copies('before');
+  timeline.prepend(...before);
+  const after = copies('after');
+  const cards = [...before, ...journeyTabs, ...after];
+  const stop = () => { window.clearInterval(timer); timer = undefined; };
+  const paint = (index: number) => {
+    activeJourney = (index + count) % count;
+    cards.forEach((tab, i) => {
+      const active = i % count === activeJourney;
+      tab.setAttribute('aria-selected', String(active));
+      tab.tabIndex = journeyTabs.includes(tab) && active ? 0 : -1;
+    });
+    journeyFrames.forEach((frame, i) => {
+      frame.classList.toggle('is-active', i === activeJourney);
+      frame.setAttribute('aria-hidden', String(i !== activeJourney));
+    });
+  };
+  const position = (card: HTMLElement) => {
+    const r = card.getBoundingClientRect();
+    const t = timeline.getBoundingClientRect();
+    return timeline.scrollLeft + r.left - t.left - (t.width - r.width) / 2;
+  };
+  const center = (slot: number, smooth = true) => {
+    if (!mobile.matches) return;
+    moving = true;
+    timeline.scrollTo({left: position(cards[slot]), behavior: smooth && !reduced.matches ? 'smooth' : 'instant'});
+    window.clearTimeout(settle);
+    settle = window.setTimeout(finish, smooth && !reduced.matches ? 650 : 30);
+  };
+  const select = (index: number, slot = count + (index + count) % count) => {
+    paint(index);
+    center(slot);
+  };
+  const start = () => {
+    stop();
+    if (document.hidden || reduced.matches || dragging || journey.contains(document.activeElement)) return;
+    timer = window.setInterval(() => select((activeJourney + 1) % count, count + activeJourney + 1), 4000);
+  };
+  function finish() {
+    window.clearTimeout(settle);
+    if (dragging || !mobile.matches) return;
+    const slot = cards.reduce((best, card, i) => Math.abs(position(card) - timeline.scrollLeft) < Math.abs(position(cards[best]) - timeline.scrollLeft) ? i : best, 0);
+    paint(slot % count);
+    moving = false;
+    // Equivalent copies keep the transition from the last step to the first seamless.
+    timeline.scrollTo({left: position(cards[count + activeJourney]), behavior:'instant'});
+    start();
+  }
+  cards.forEach((tab, slot) => tab.addEventListener('click', () => { select(slot % count, slot); start(); }));
+  journeyTabs.forEach((tab, index) => tab.addEventListener('keydown', event => {
+    const next = event.key === 'ArrowRight' ? (index + 1) % count : event.key === 'ArrowLeft' ? (index + count - 1) % count : event.key === 'Home' ? 0 : event.key === 'End' ? count - 1 : null;
+    if (next !== null) { event.preventDefault(); journeyTabs[next].focus({preventScroll:true}); select(next); stop(); }
+  }));
+  timeline.addEventListener('pointerdown', () => { dragging = true; stop(); });
+  const release = () => { if (dragging) { dragging = false; window.clearTimeout(settle); settle = window.setTimeout(finish, 160); } };
+  window.addEventListener('pointerup', release);
+  window.addEventListener('pointercancel', release);
+  timeline.addEventListener('scroll', () => {
+    if (!mobile.matches || moving) return;
+    window.clearTimeout(settle);
+    settle = window.setTimeout(finish, 160);
+  }, {passive:true});
+  let touchX = 0;
+  let touchY = 0;
+  stage.addEventListener('pointerdown', event => { touchX = event.clientX; touchY = event.clientY; stop(); stage.setPointerCapture(event.pointerId); });
+  stage.addEventListener('pointerup', event => {
+    const dx = event.clientX - touchX;
+    if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(event.clientY - touchY)) {
+      const direction = dx < 0 ? 1 : -1;
+      select((activeJourney + direction + count) % count, count + activeJourney + direction);
+    }
+    start();
+  });
+  stage.addEventListener('pointercancel', start);
+  journey.addEventListener('focusin', stop);
+  journey.addEventListener('focusout', () => window.setTimeout(start, 0));
+  const reset = () => { moving = false; paint(activeJourney); center(count + activeJourney, false); start(); };
+  new ResizeObserver(reset).observe(timeline);
+  reduced.addEventListener('change', reset);
+  mobile.addEventListener('change', reset);
+  document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
+  reset();
 }
 
 const filters = all<HTMLButtonElement>('[data-filter]');

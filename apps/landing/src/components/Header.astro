@@ -15,10 +15,13 @@ const contactTargets: Record<string, string> = { integra: '/integra/#brief-integ
 <header class:list={['site-header', { 'site-header--photo': photo, 'site-header--rent': brand === 'rent' }]}>
   <div class="shell header-inner">
     <a class="home-link" href={currentPath} aria-label="Inicio"><Brand unit={brand === 'met' ? 'met' : brand === 'rent' ? 'rent' : ''} inverse={false} /></a>
-    <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav">Menú <span aria-hidden="true">+</span></button>
+    <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-nav"><span class="menu-icon" aria-hidden="true"><i></i><i></i><i></i></span></button>
+    <div class="menu-backdrop" aria-hidden="true"></div>
     <nav id="main-nav" aria-label="Navegación principal">
+      <div class="menu-heading"><Brand /><small>Ingeniería · Manufactura · Renta</small></div>
       {paths.map(item => <a href={item.href} aria-current={currentPath === item.href ? 'page' : undefined}>{item.label}</a>)}
       <a href={contactTargets[brand]}>Contacto</a>
+      <p class="menu-location">Aguascalientes, México</p>
     </nav>
     <span class="header-location">Aguascalientes, México</span>
   </div>

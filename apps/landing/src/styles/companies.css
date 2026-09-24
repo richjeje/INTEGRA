@@ -23,7 +23,6 @@
   .company-hero--integra .company-hero-overlay{background:linear-gradient(90deg,#a91527f2 0%,#cf202edb 35%,#cf202e9a 64%,#cf202e2b 100%),linear-gradient(180deg,#991626a8 0%,transparent 38%,#a1162791 100%)}
   .company-hero--met .company-hero-overlay{background:rgb(0 0 0 / 45%)}
   .company-hero-copy{position:relative;padding-top:100px;padding-bottom:70px;animation:company-intro .6s both}
-  .company-breadcrumb{display:flex;align-items:center;gap:9px;margin-bottom:22px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#ffffffb8}.company-breadcrumb a{color:inherit}.company-breadcrumb a:hover{color:var(--yellow)}.company-hero--rent .company-breadcrumb{color:var(--muted)}.company-hero--rent .company-breadcrumb a:hover{color:var(--red)}
   .company-tagline{display:flex;align-items:center;gap:17px;margin-bottom:27px}
   .company-tagline .brand{color:white;font-size:21px}
   .company-tagline .brand-unit{color:#ffffffce}
