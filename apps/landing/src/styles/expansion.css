@@ -78,7 +78,7 @@
     .engineering--story .journey-frame--design .design-assembly{width:100%;height:68%;margin:0;padding:45px 7px 0;object-position:center top}
     .engineering--story .journey-frame--design .design-components{top:1%;left:3%;width:39%;height:31%;object-position:left top}
     .engineering--story .journey-frame>img{object-position:center}
-    .engineering--story .journey-timeline{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding:1px 1px 12px;scrollbar-width:none}
+    .engineering--story .journey-timeline{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding:1px 1px 12px;scrollbar-width:thin;scrollbar-color:#c5c9cb transparent;-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);mask-image:linear-gradient(90deg,#000 85%,transparent)}
     .engineering--story .journey-timeline::-webkit-scrollbar{display:none}
     .engineering--story .journey-timeline button{flex:0 0 190px;min-height:105px;scroll-snap-align:start;padding:16px}
     .engineering--story .journey-timeline strong{font-size:14px}.engineering--story .journey-timeline small{display:block;font-size:10px}

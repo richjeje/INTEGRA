@@ -1,0 +1,35 @@
+---
+import logo from '../../public/brand/integra.svg?raw';
+import '../styles/laser-intro.css';
+// The source SVG places the small tagline below y=250. Keep only the main mark.
+const paths = (logo.match(/<path\b[^>]*\/>/g) ?? []).filter(path => {
+  const translation = path.match(/translate\(([-\d.]+)[, ]+([-\d.]+)\)/);
+  return translation && Number(translation[2]) < 250 && !path.includes('d=""');
+}).join('');
+---
+<div class="laser-intro" id="laser-intro" data-intro-skip role="dialog" aria-modal="true" aria-label="Logo de Integra cortado con láser. Pulsa Escape o toca para omitir." tabindex="-1">
+  <div class="laser-intro-scene">
+    <svg class="laser-plate" viewBox="0 0 1000 600" aria-hidden="true">
+      <defs>
+        <clipPath id="plate-clip"><rect x="64" y="64" width="872" height="448" rx="10"/></clipPath>
+        <linearGradient id="plate-metal" x1="0" y1="0" x2=".85" y2="1"><stop stop-color="#f8fafb"/><stop offset=".13" stop-color="#9ba6af"/><stop offset=".3" stop-color="#e0e6ea"/><stop offset=".43" stop-color="#fafcfd"/><stop offset=".49" stop-color="#b4bec6"/><stop offset=".64" stop-color="#727f89"/><stop offset=".8" stop-color="#c5cfd6"/><stop offset=".94" stop-color="#f4f7f9"/><stop offset="1" stop-color="#9daab3"/></linearGradient>
+        <linearGradient id="plate-edge" x2="0" y2="1"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#727f89"/></linearGradient>
+        <radialGradient id="laser-halo"><stop stop-color="#fffce6" stop-opacity=".9"/><stop offset=".15" stop-color="#ffd694" stop-opacity=".75"/><stop offset=".45" stop-color="#ff7b26" stop-opacity=".2"/><stop offset="1" stop-color="#ff6b20" stop-opacity="0"/></radialGradient>
+        <pattern id="metal-brush" width="7" height="4" patternUnits="userSpaceOnUse"><path d="M0 .5H7M2 2.5H6" stroke="#e4ebef" stroke-opacity=".09" stroke-width=".5"/></pattern>
+        <filter id="metal-grain"><feTurbulence type="fractalNoise" baseFrequency=".7" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".055"/></feComponentTransfer><feBlend in="SourceGraphic" mode="soft-light"/></filter>
+        <filter id="cut-glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="1.6"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <ellipse cx="500" cy="530" rx="410" ry="15" fill="#23303a" opacity=".1"/>
+      <rect x="62" y="70" width="876" height="452" rx="12" fill="#7d8992"/>
+      <rect x="62" y="62" width="876" height="452" rx="12" fill="url(#plate-metal)" stroke="url(#plate-edge)" stroke-width="2"/>
+      <g clip-path="url(#plate-clip)"><rect x="64" y="64" width="872" height="448" rx="10" fill="url(#metal-brush)" filter="url(#metal-grain)"/></g>
+      <g class="laser-artwork" transform="translate(154 160)" set:html={paths} />
+      <g class="laser-tool" opacity="0">
+        <circle r="50" fill="url(#laser-halo)"/>
+        <g class="laser-sparks">{Array.from({length:18}, (_,i) => <line x1="0" y1="0" x2="0" y2="0" stroke={i%3 ? '#ff9b38' : '#fff2bf'} stroke-width={i%3 ? '1.5' : '2.2'} stroke-linecap="round" />)}</g>
+        <circle r="4" fill="#fff"/><circle r="8" fill="none" stroke="#fff5c5" stroke-opacity=".6"/>
+      </g>
+    </svg>
+  </div>
+</div>
+<script src="../scripts/laser-intro.ts"></script>

@@ -26,6 +26,12 @@ El repositorio incluye configuración para dos raíces de proyecto: `vercel.json
 
 No publicar la raíz ni `public/` como salida: contienen fuentes y recursos, no el sitio compilado. `apps/landing/index.html` es un prototipo antiguo; la portada vigente se genera desde `src/pages/index.astro`. Los comandos y la carpeta de salida quedan versionados según la [configuración oficial de Vercel](https://vercel.com/docs/project-configuration/vercel-json). La configuración remota y el despliegue final deben verificarse en el proyecto Vercel correspondiente.
 
+## Intro de corte láser
+
+La portada muestra una entrada de unos 4 segundos que traza el símbolo y el nombre del SVG original, sin el lema pequeño, sobre una placa metálica plateada y fondo blanco. Se reproduce al abrir o recargar la portada, sin depender de la sesión ni de parámetros en la URL. Con movimiento reducido se omite la reproducción automática; el enlace visible «Ver intro» (`/?intro=1`) permite reproducirla voluntariamente incluso con esa preferencia activa. Se puede omitir tocando la pantalla o con Escape, e incluye salida automática de seguridad a los 6,5 segundos. Sin JavaScript la página aparece directamente. No depende de videos, imágenes externas ni solicitudes adicionales para el logo.
+
+Los archivos son `src/components/LaserIntro.astro`, `src/styles/laser-intro.css` y `src/scripts/laser-intro.ts`. `tooling/qa_laser_intro.py` comprueba el trazado, cierre, repetición, tamaños móviles y los casos sin JavaScript o con fallo del script, usando las mismas variables de entorno que la prueba responsive.
+
 ## Dónde editar
 
 - `src/pages/index.astro`: portada y accesos a cada empresa.

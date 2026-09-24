@@ -5,11 +5,26 @@ import '../styles/companies.css';
 import '../styles/expansion.css';
 import '../styles/responsive.css';
 import Header from '../components/Header.astro';
+import LaserIntro from '../components/LaserIntro.astro';
 interface Props { title?: string; description?: string; brand?: 'home' | 'integra' | 'met' | 'rent'; }
 const { title = 'Integra | Ingeniería, manufactura y renta de equipo', description = 'Ingeniería e integración industrial, manufactura en metal y renta de equipo en Aguascalientes.', brand = 'home' } = Astro.props;
 ---
 <!doctype html>
 <html lang="es">
   <head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="description" content={description} /><meta name="theme-color" content={brand === 'integra' || brand === 'home' ? '#CF202E' : '#10243A'} /><meta name="robots" content="noindex, nofollow" /><link rel="icon" type="image/svg+xml" href="/favicon.svg" /><title>{title}</title></head>
-  <body data-brand={brand}><Header brand={brand} /><main id="contenido"><slot /></main><script src="../scripts/site.ts"></script></body>
+  <body data-brand={brand}>
+    {brand === 'home' && <script is:inline>
+      (() => {
+        try {
+          const requested = new URLSearchParams(location.search).get('intro') === '1';
+          if (matchMedia('(prefers-reduced-motion: reduce)').matches && !requested) return;
+          if (requested) document.documentElement.setAttribute('data-laser-motion', 'full');
+          document.documentElement.setAttribute('data-laser-intro', '');
+          setTimeout(() => document.documentElement.removeAttribute('data-laser-intro'), 6500);
+        } catch { /* Keep the page visible if initialization is unavailable. */ }
+      })();
+    </script>}
+    {brand === 'home' && <LaserIntro />}
+    <Header brand={brand} /><main id="contenido" tabindex="-1"><slot /></main><script src="../scripts/site.ts"></script>
+  </body>
 </html>
