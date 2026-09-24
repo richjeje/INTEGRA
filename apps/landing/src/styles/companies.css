@@ -86,7 +86,7 @@
     .site-header--photo,.site-header--rent{height:76px}
     .company-hero{height:82svh;min-height:min(690px,82svh);max-height:860px;align-items:flex-start}
     .company-hero-photo{object-position:58% center}
-    .company-hero--integra .company-hero-overlay{background:linear-gradient(90deg,#a71527f2 0%,#c31f2ddb 62%,#c31f2d98 100%),linear-gradient(180deg,#981626a8 0%,transparent 30%,#a91527d9 100%)}
+    .company-hero--integra .company-hero-overlay{background:linear-gradient(90deg,#a71527c0 0%,#c31f2d80 62%,#c31f2d40 100%),linear-gradient(180deg,#98162680 0%,transparent 30%,#a9152780 100%)}
     .company-hero--met .company-hero-overlay{background:rgb(0 0 0 / 45%)}
     .company-hero-copy{padding-top:clamp(155px,22svh,190px);padding-bottom:135px}
     .company-tagline{align-items:flex-start;flex-direction:column;gap:11px;margin-bottom:21px}
