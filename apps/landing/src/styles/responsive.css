@@ -1,0 +1,102 @@
+/* Final responsive rules shared by the four public pages. Keep content in flow
+   so short screens and larger text cannot clip the hero or overlap its links. */
+@layer responsive {
+  .introduction.hero {
+    height:auto;
+    min-height:100svh;
+    max-height:none;
+    flex-direction:column;
+    justify-content:center;
+    align-items:stretch;
+    padding-top:120px;
+  }
+  .hero-main.shell { padding-top:32px; padding-bottom:48px; }
+  .hero>.unit-index.shell { position:relative; inset:auto; padding-bottom:64px; }
+  .hero-actions { flex-wrap:wrap; }
+  .company-hero { height:auto; min-height:90svh; max-height:none; }
+  .company-hero-copy { padding-top:140px; padding-bottom:100px; }
+  .company-hero--rent .company-hero-copy { padding-top:140px; padding-bottom:100px; }
+
+  .engineering--story .journey-stage { width:100%; aspect-ratio:auto; }
+  .process-step, .process-step>*, .process-resource-grid,
+  .engineering-copy>*, .footer-grid>*, .brief-grid>*,
+  .division-card>* { min-width:0; }
+  .footer-column a { overflow-wrap:anywhere; }
+  .menu-toggle { min-height:44px; }
+  body:not(.enhanced) a[data-contact] { display:inline-flex; }
+  body:not(.enhanced) .journey-timeline,
+  body:not(.enhanced) .equipment-task-guide,
+  body:not(.enhanced) .equipment-reset,
+  body:not(.enhanced) .brief-options { display:none; }
+
+  @media (max-width:1100px) {
+    .footer-grid { grid-template-columns:1.4fr 1fr 1fr; gap:36px; }
+    .footer-contact { grid-column:2/4; }
+  }
+  @media (max-width:850px) {
+    .engineering--story .journey-stage { min-height:0; height:460px; }
+    .engineering--story .journey-timeline { mask-image:none; }
+  }
+  @media (max-width:850px), (hover:none) {
+    body[data-brand="rent"] .equipment-visual { height:auto; }
+    body[data-brand="rent"] .equipment-photo { height:260px; }
+    body[data-brand="rent"] .equipment-reveal {
+      position:relative; inset:auto; transform:none; pointer-events:auto;
+      padding:20px; transition:none;
+    }
+    body[data-brand="rent"] .equipment-reveal>p,
+    body[data-brand="rent"] .equipment-reveal dl>div { opacity:1; transform:none; }
+    body[data-brand="rent"] .equipment-reveal dl>div { grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:12px; }
+    body[data-brand="rent"] .equipment-reveal dd { overflow-wrap:anywhere; }
+    body[data-brand="rent"] .equipment-card .equipment-photo img { filter:none; transform:none; }
+    body[data-brand="rent"] .equipment-card .equipment-visual { transform:none; }
+  }
+  @media (max-width:760px) {
+    .company-hero--rent { flex-direction:column; }
+    .company-hero--rent .company-hero-copy {
+      padding:130px var(--gutter) 36px;
+      max-width:none;
+    }
+    .company-hero--rent .company-hero-media {
+      position:relative; inset:auto; order:2; width:100%; height:320px;
+    }
+    .company-hero--rent .company-hero-media img { width:85%; height:90%; }
+    .company-hero--rent .company-hero-index { z-index:2; bottom:18px; }
+    body[data-brand="met"] .process-resource-grid,
+    body[data-brand="met"] #proceso-doblado .process-resource-grid {
+      display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); overflow:visible;
+    }
+    body[data-brand="met"] .process-resource-card figure { height:115px; padding:12px; }
+    body[data-brand="met"] .process-resource-card>div { padding:12px; }
+  }
+  @media (max-width:600px) {
+    body[data-brand="rent"] .equipment-grid { grid-template-columns:minmax(0,1fr); }
+    .introduction.hero { padding-top:100px; }
+    .hero-main.shell { padding-top:32px; padding-bottom:36px; }
+    .hero>.unit-index.shell { padding-bottom:40px; }
+    .hero h1 { font-size:clamp(36px,10vw,56px); }
+    .company-hero-copy { padding:130px var(--gutter) 80px; }
+    .company-hero h1 { font-size:clamp(36px,10vw,56px); }
+    .company-hero--rent h1 { font-size:clamp(36px,9.7vw,52px); }
+    .engineering--story .journey-stage { height:380px; min-height:0; }
+    .footer-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:36px 24px; }
+    .footer-contact { grid-column:1/-1; }
+    .division-card { grid-template-columns:minmax(0,.8fr) minmax(0,1fr); }
+    .division-card-brand .brand-logo { max-width:100%; }
+    .contact-dock #whatsapp { width:52px; height:52px; padding:0; }
+    .contact-dock { right:16px; bottom:max(16px,env(safe-area-inset-bottom)); }
+    body:not(.enhanced) #main-nav {
+      top:75px; flex-wrap:wrap; gap:4px; padding:8px var(--gutter);
+      background:var(--navy); border:0;
+    }
+    body:not(.enhanced) .site-header #main-nav a { color:white; font-size:12px; }
+    body:not(.enhanced) .introduction.hero { padding-top:150px; }
+    body:not(.enhanced) .company-hero-copy { padding-top:180px; }
+  }
+  @media (max-width:359px) {
+    .division-card { grid-template-columns:1fr; }
+    .division-card-image { height:190px; }
+    .division-card-copy { border-left:0; border-top:3px solid var(--red); }
+    body[data-brand="rent"] .equipment-results-bar { grid-template-columns:1fr; }
+  }
+}

@@ -6,7 +6,7 @@ El plan de arquitectura, clasificación de imágenes, orden de contenido y anima
 
 ## Desarrollo
 
-Desde `apps/landing`, con Node compatible con la versión fijada en `package-lock.json`:
+Desde `apps/landing`, con Node 24.x:
 
 ```sh
 npm ci
@@ -20,6 +20,12 @@ Desarrollo: http://127.0.0.1:4321. Vista del build: http://127.0.0.1:4322.
 
 El build estático se genera en `dist/`. La configuración sigue el flujo de [desarrollo y build de Astro](https://docs.astro.build/en/develop-and-build/). No se ha publicado; el layout incluye `noindex, nofollow` durante esta fase de revisión. Antes del lanzamiento se debe configurar el dominio real y retirar esa directiva.
 
+## Publicación en Vercel
+
+El repositorio incluye configuración para dos raíces de proyecto: `vercel.json` en la raíz compila `apps/landing` y publica únicamente `apps/landing/dist`; si el proyecto ya utiliza `apps/landing` como Root Directory, se aplica el `vercel.json` de esa carpeta y se publica `dist`. Se usa Node 24.x. Las cuatro rutas son HTML estático y no necesitan una reescritura hacia una única página.
+
+No publicar la raíz ni `public/` como salida: contienen fuentes y recursos, no el sitio compilado. `apps/landing/index.html` es un prototipo antiguo; la portada vigente se genera desde `src/pages/index.astro`. Los comandos y la carpeta de salida quedan versionados según la [configuración oficial de Vercel](https://vercel.com/docs/project-configuration/vercel-json). La configuración remota y el despliegue final deben verificarse en el proyecto Vercel correspondiente.
+
 ## Dónde editar
 
 - `src/pages/index.astro`: portada y accesos a cada empresa.
@@ -27,6 +33,7 @@ El build estático se genera en `dist/`. La configuración sigue el flujo de [de
 - `src/components/CompanyHero.astro`, `CompanyPreviews.astro`: cabeceras de marca y accesos del inicio.
 - `src/components/`: introducción, ingeniería, manufactura, equipos, proyectos y pie.
 - `src/styles/global.css`: paleta, tipografía, composición, responsive y animaciones.
+- `src/styles/responsive.css`: ajustes finales compartidos de portadas, rejillas y navegación para pantallas pequeñas y táctiles.
 - `src/data/catalog.js`: capacidades, equipos y condiciones derivadas de las fichas documentales.
 - `src/data/images.json`: medidas de las imágenes.
 - `src/scripts/site.ts`: pestañas, filtros, menú, animaciones y contexto de WhatsApp.
@@ -44,6 +51,6 @@ Animación: entradas de 14 px al desplazarse, cambio breve de panel, estados de 
 
 ## Comprobaciones
 
-`npm run check` y `npm run build`. El script `tooling/qa_astro.py`, desde la raíz del repositorio, verifica la vista de producción en el puerto 4322: carga y decodificación de imágenes, capacidades, pestañas por teclado, filtros, fichas, un único contacto contextual, menú móvil, ausencia de flechas y de desbordamientos entre 320 y 1920 px, movimiento reducido y contenido sin JavaScript. Utiliza el runtime Python/Playwright local preparado para este proyecto; las capturas y el informe quedan en `tmp/astro-qa/`.
+`npm run check` y `npm run build`. El script vigente `tooling/qa_responsive.py`, desde la raíz del repositorio, verifica las cuatro páginas de producción en el puerto 4322, en nueve tamaños entre 320 y 1920 px, incluida orientación horizontal. Comprueba contenido de las portadas sin recortes ni superposiciones, imágenes, enlaces internos, menú móvil, filtros de los 11 equipos, teclado, contacto contextual, movimiento reducido, pantallas táctiles y contenido sin JavaScript. Requiere Python con Playwright y Chromium (`python -m playwright install chromium`); se puede indicar un navegador instalado con `PLAYWRIGHT_CHROMIUM_EXECUTABLE` y otra URL con `QA_BASE_URL`. Ejecutar `python tooling/qa_responsive.py`. Las capturas y el informe quedan en `tmp/astro-qa/`. `qa_astro.py` conserva las pruebas del prototipo anterior de una sola página.
 
 La referencia técnica sigue siendo `docs/equipos/FICHAS-TECNICAS-INTEGRA.md`. Las restauraciones con IA no acreditan etiquetas, modelos o geometrías; su procedencia y limitaciones están documentadas en `docs/equipos/MEJORA-IMAGENES.md`.

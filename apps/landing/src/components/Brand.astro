@@ -2,7 +2,7 @@
 interface Props { unit?: string; inverse?: boolean; }
 const { unit = '', inverse = false } = Astro.props;
 const key = unit === 'met' ? 'integra-met' : unit === 'rent' ? 'integra-rent' : 'integra';
-const assetKey = inverse && unit === 'met' ? 'integra-met-white' : key;
+const assetKey = inverse ? `${key}-white` : key;
 const label = unit === 'met' ? 'Integra Met' : unit === 'rent' ? 'Integra Rent' : 'Integra';
 ---
 <span class:list={['brand', `brand--${key}`]}>

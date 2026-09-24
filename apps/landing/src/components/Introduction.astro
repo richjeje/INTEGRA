@@ -18,7 +18,7 @@ const units = [
   </div>
   <nav class="unit-index shell" id="empresas" aria-label="Explorar nuestras empresas">
     {units.map(unit => <a href={`/${unit.id}/`} class={`unit-index-item ${unit.id}`}>
-      <div class="unit-index-top"><Brand unit={unit.unit} /><span class="index-number">{unit.number}</span></div>
+      <div class="unit-index-top"><Brand unit={unit.unit} inverse={unit.id !== 'rent'} /><span class="index-number">{unit.number}</span></div>
       <p>{unit.text}</p><span class="unit-description">{unit.detail}</span>
     </a>)}
   </nav>

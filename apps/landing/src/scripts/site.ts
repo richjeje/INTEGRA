@@ -9,6 +9,7 @@ function closeMenu() { menu.setAttribute('aria-expanded', 'false'); navigation.c
 menu.addEventListener('click', () => { const open = menu.getAttribute('aria-expanded') !== 'true'; menu.setAttribute('aria-expanded', String(open)); navigation.classList.toggle('open', open); });
 document.addEventListener('keydown', event => { if (event.key === 'Escape' && menu.getAttribute('aria-expanded') === 'true') { closeMenu(); menu.focus(); } });
 document.addEventListener('click', event => { if (event.target instanceof Node && !document.querySelector('.site-header')!.contains(event.target)) closeMenu(); });
+matchMedia('(max-width: 600px)').addEventListener('change', () => closeMenu());
 
 const whatsapp = document.querySelector<HTMLAnchorElement>('#whatsapp')!;
 const contextLabel = document.querySelector<HTMLElement>('#contact-context')!;
@@ -24,7 +25,10 @@ all<HTMLAnchorElement>('#main-nav a, .unit-index a').forEach(link => link.addEve
   const context: Record<string, string> = { '#integra': 'un proyecto de ingeniería con Integra', '#met': 'los servicios de Integra Met', '#rent': 'los equipos de Integra Rent' };
   setContact(context[link.hash] || 'un proyecto con Integra');
 }));
-all<HTMLButtonElement>('[data-contact]').forEach(button => button.addEventListener('click', () => { setContact(button.dataset.contact!, true); whatsapp.focus({ preventScroll: true }); }));
+all<HTMLElement>('[data-contact]').forEach(control => control.addEventListener('click', () => {
+  setContact(control.dataset.contact!, true);
+  if (control instanceof HTMLButtonElement) whatsapp.focus({ preventScroll: true });
+}));
 
 const tabs = all<HTMLButtonElement>('[data-process]');
 if (tabs.length) document.querySelector('.process-tabs')!.setAttribute('role', 'tablist');
@@ -54,6 +58,7 @@ if (journey) {
   const journeyProgress = journey.querySelector<HTMLElement>('[data-journey-progress]')!;
   let activeJourney = 0;
   let journeyTimer: number | undefined;
+  const journeyReducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   const stopJourney = () => { if (journeyTimer !== undefined) window.clearInterval(journeyTimer); journeyTimer = undefined; };
   const selectJourney = (index: number) => {
     activeJourney = index;
@@ -72,7 +77,7 @@ if (journey) {
   };
   const startJourney = () => {
     stopJourney();
-    if (!journeyTabs.length || document.hidden) return;
+    if (!journeyTabs.length || document.hidden || journeyReducedMotion.matches || journey.matches(':hover, :focus-within')) return;
     journeyTimer = window.setInterval(() => selectJourney((activeJourney + 1) % journeyTabs.length), 2000);
   };
   journeyTabs.forEach((tab, index) => {
@@ -83,6 +88,11 @@ if (journey) {
     });
   });
   startJourney();
+  journey.addEventListener('mouseenter', stopJourney);
+  journey.addEventListener('mouseleave', startJourney);
+  journey.addEventListener('focusin', stopJourney);
+  journey.addEventListener('focusout', () => setTimeout(startJourney, 0));
+  journeyReducedMotion.addEventListener('change', startJourney);
   document.addEventListener('visibilitychange', () => document.hidden ? stopJourney() : startJourney());
 }
 

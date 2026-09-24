@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
+  "engines": { "node": "24.x" },
   "scripts": {
     "dev": "astro dev --host 127.0.0.1",
     "build": "astro build",
@@ -13,5 +14,8 @@
     "@astrojs/check": "^0.9.10",
     "astro": "^7.3.3",
     "typescript": "^6.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.6"
   }
 }
