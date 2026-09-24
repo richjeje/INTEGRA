@@ -69,6 +69,26 @@
     body[data-brand="met"] .process-resource-card figure { height:115px; padding:12px; }
     body[data-brand="met"] .process-resource-card>div { padding:12px; }
   }
+  
+  @media (max-width:768px) {
+    .site-header{height:76px}
+    .header-inner{justify-content:space-between}
+    .brand{font-size:31px}
+    .menu-toggle{display:flex;font-size:12px;gap:16px;padding:10px 0}
+    .menu-toggle span{font-size:17px;line-height:1.1;transition:transform .2s}
+    .menu-toggle[aria-expanded=true] span{transform:rotate(45deg)}
+    #main-nav{display:flex;gap:7px;position:absolute;top:75px;left:0;width:100%;padding:20px var(--gutter);background:white;border-bottom:1px solid var(--line)}
+    #main-nav a{font-size:11px;padding:8px}
+    .enhanced #main-nav{display:none}
+    .enhanced #main-nav.open{display:flex;flex-direction:column;align-items:stretch;gap:3px;padding:15px var(--gutter) 24px}
+    .enhanced #main-nav a{font-size:14px;padding:10px 0}
+    body:not(.enhanced) #main-nav {
+      top:75px; flex-wrap:wrap; gap:4px; padding:8px var(--gutter);
+      background:var(--navy); border:0;
+    }
+    body:not(.enhanced) .site-header #main-nav a { color:white; font-size:12px; }
+  }
+
   @media (max-width:600px) {
     body[data-brand="rent"] .equipment-grid { grid-template-columns:minmax(0,1fr); }
     .introduction.hero { padding-top:100px; }
@@ -100,3 +120,4 @@
     body[data-brand="rent"] .equipment-results-bar { grid-template-columns:1fr; }
   }
 }
+
