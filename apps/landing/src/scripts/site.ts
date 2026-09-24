@@ -1,4 +1,4 @@
-export {};
+﻿export {};
 const all = <T extends Element = HTMLElement>(selector: string) => Array.from(document.querySelectorAll<T>(selector));
 document.body.classList.add('enhanced');
 
@@ -9,7 +9,7 @@ function closeMenu() { menu.setAttribute('aria-expanded', 'false'); navigation.c
 menu.addEventListener('click', () => { const open = menu.getAttribute('aria-expanded') !== 'true'; menu.setAttribute('aria-expanded', String(open)); navigation.classList.toggle('open', open); });
 document.addEventListener('keydown', event => { if (event.key === 'Escape' && menu.getAttribute('aria-expanded') === 'true') { closeMenu(); menu.focus(); } });
 document.addEventListener('click', event => { if (event.target instanceof Node && !document.querySelector('.site-header')!.contains(event.target)) closeMenu(); });
-matchMedia('(max-width: 600px)').addEventListener('change', () => closeMenu());
+matchMedia('(max-width: 768px)').addEventListener('change', () => closeMenu());
 
 const whatsapp = document.querySelector<HTMLAnchorElement>('#whatsapp')!;
 const contextLabel = document.querySelector<HTMLElement>('#contact-context')!;
@@ -77,7 +77,7 @@ if (journey) {
   };
   const startJourney = () => {
     stopJourney();
-    if (!journeyTabs.length || document.hidden || journeyReducedMotion.matches || journey.matches(':hover, :focus-within')) return;
+    if (!journeyTabs.length || document.hidden || journeyReducedMotion.matches) return;
     journeyTimer = window.setInterval(() => selectJourney((activeJourney + 1) % journeyTabs.length), 2000);
   };
   journeyTabs.forEach((tab, index) => {
@@ -88,11 +88,7 @@ if (journey) {
     });
   });
   startJourney();
-  journey.addEventListener('mouseenter', stopJourney);
-  journey.addEventListener('mouseleave', startJourney);
-  journey.addEventListener('focusin', stopJourney);
-  journey.addEventListener('focusout', () => setTimeout(startJourney, 0));
-  journeyReducedMotion.addEventListener('change', startJourney);
+          journeyReducedMotion.addEventListener('change', startJourney);
   document.addEventListener('visibilitychange', () => document.hidden ? stopJourney() : startJourney());
 }
 
@@ -140,3 +136,5 @@ if ('IntersectionObserver' in window) {
     reducedMotion.addEventListener('change', event => { if (event.matches) { reveal.disconnect(); all('.reveal-pending').forEach(element => element.classList.remove('reveal-pending')); } });
   }
 }
+
+
