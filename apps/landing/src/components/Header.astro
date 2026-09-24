@@ -1,24 +1,24 @@
 ---
 import Brand from './Brand.astro';
 interface Props { brand?: string; }
-const { brand = 'home' } = Astro.props;
+const { brand = 'integra' } = Astro.props;
 const paths = [
   { href: '/integra/', label: 'Integra' },
   { href: '/met/', label: 'Integra Met' },
   { href: '/rent/', label: 'Integra Rent' },
 ];
 const currentPath = Astro.url.pathname.replace(/\/?$/, '/');
-const photo = ['home', 'integra', 'met'].includes(brand);
+const photo = ['integra', 'met'].includes(brand);
 const contactTargets: Record<string, string> = { integra: '/integra/#brief-integra', met: '/met/#brief-met', rent: '/rent/#brief-rent' };
 ---
 <a class="skip-link" href="#contenido">Ir al contenido</a>
-<header class:list={['site-header', { 'site-header--hero': brand === 'home', 'site-header--photo': photo && brand !== 'home', 'site-header--rent': brand === 'rent' }]}>
+<header class:list={['site-header', { 'site-header--photo': photo, 'site-header--rent': brand === 'rent' }]}>
   <div class="shell header-inner">
-    <a class="home-link" href="/" aria-label="Inicio"><Brand unit={brand === 'met' ? 'met' : brand === 'rent' ? 'rent' : ''} inverse={photo} /></a>
+    <a class="home-link" href={currentPath} aria-label="Inicio"><Brand unit={brand === 'met' ? 'met' : brand === 'rent' ? 'rent' : ''} inverse={photo} /></a>
     <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav">Menú <span aria-hidden="true">+</span></button>
     <nav id="main-nav" aria-label="Navegación principal">
       {paths.map(item => <a href={item.href} aria-current={currentPath === item.href ? 'page' : undefined}>{item.label}</a>)}
-      {brand !== 'home' && <a href={contactTargets[brand]}>Contacto</a>}
+      <a href={contactTargets[brand]}>Contacto</a>
     </nav>
     <span class="header-location">Aguascalientes, México</span>
   </div>
