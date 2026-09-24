@@ -1,0 +1,28 @@
+---
+const brands = [
+  { name: 'Nissan', file: 'nissan.svg' },
+  { name: 'VIAM', file: 'viam.png' },
+  { name: 'Jatco', file: 'jatco.svg' },
+  { name: 'MAHLE', file: 'mahle.svg' },
+  { name: 'Beyonz', file: 'beyonz.png' },
+  { name: 'EXEDY', file: 'exedy.png' },
+  { name: 'Toyota', file: 'toyota.svg' },
+  { name: 'Honda', file: 'honda.svg' },
+  { name: 'NKC', file: 'nkc.svg' },
+  { name: 'Adient', file: 'adient.svg' },
+];
+---
+<section id="proyectos" class="section brand-experience" aria-labelledby="projects-title"><div class="shell">
+  <div class="brand-experience-heading" data-reveal>
+    <div><p class="eyebrow red">Experiencia con marcas industriales</p><h2 id="projects-title">Marcas que forman parte de nuestra experiencia.</h2></div>
+    <p class="section-copy">Nuestra experiencia reúne proyectos y soluciones industriales para marcas del sector automotriz y de manufactura.</p>
+  </div>
+
+  <ul class="brand-wall" aria-label="Marcas con las que ha trabajado Integra" data-reveal>
+    {brands.map(({ name, file }) => (
+      <li><img class="client-logo" src={`/brand/clientes/${file}`} alt={name} width="200" height="84" loading="lazy" decoding="async" /></li>
+    ))}
+  </ul>
+
+  <div class="brand-experience-note" data-reveal><span>Experiencia multimarca</span><p>Seleccionamos e integramos la tecnología adecuada según la necesidad, capacidad y condiciones de cada proyecto.</p></div>
+</div></section>

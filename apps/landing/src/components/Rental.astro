@@ -1,0 +1,28 @@
+---
+import { equipment } from '../data/rent';
+import Photo from './Photo.astro';
+import images from '../data/images.json';
+const tasks = [
+  ['altura', 'Trabajar en altura', 'Plataformas de elevación'],
+  ['carga', 'Mover una carga', 'Grúas y montacargas'],
+  ['energia', 'Iluminar o soldar', 'Torres y fuentes de energía'],
+  ['herramientas', 'Demoler concreto', 'Herramientas de impacto'],
+  ['obra', 'Preparar mezcla', 'Equipo para concreto'],
+];
+---
+<section id="rent" class="section shell rental" aria-labelledby="rent-title">
+  <div class="section-heading rental-heading" data-reveal><div><h2 id="rent-title">¿Para qué necesitas el equipo?</h2></div></div>
+  <div class="equipment-task-guide" data-reveal>
+    <div class="equipment-task-intro"><strong>Elige el trabajo a realizar.</strong></div>
+    <div class="task-grid" role="group" aria-label="Filtrar equipos según el trabajo a realizar">{tasks.map(([filter,title,copy]) => <button data-filter={filter} data-filter-label={title} data-contact-context={title} aria-pressed="false"><strong>{title}</strong><small>{copy}</small></button>)}</div>
+  </div>
+  <div class="equipment-results-bar">
+    <div><strong data-equipment-selection>Todos los equipos</strong></div>
+    <button class="equipment-reset" data-filter="todos" data-filter-label="Todos los equipos" aria-pressed="true">Ver todo el equipo</button>
+  </div>
+  <div class="equipment-grid">{equipment.map(item => <article class="equipment-card" tabindex="0" data-category={item.category} data-equipment-id={item.id}>
+    <div class="equipment-visual"><div class="equipment-photo">{item.image.startsWith('/') ? <img src={item.image} alt={`${item.name} ${item.model}`} width="800" height="2048" loading="lazy" decoding="async" /> : <Photo name={item.image as keyof typeof images} alt={`${item.name}; imagen ilustrativa restaurada`} />}</div><div class="equipment-reveal"><p>{item.model}</p><dl><div class="equipment-main-spec"><dt>{item.label}</dt><dd>{item.spec}</dd></div>{item.details.slice(1).map(([key,value]) => <div><dt>{key}</dt><dd>{value}</dd></div>)}</dl><a class="equipment-inquiry" href={`https://wa.me/524495411077?text=${encodeURIComponent(`Hola, me interesa rentar ${item.name} (${item.model}). ¿Me pueden compartir disponibilidad y cotización de este equipo?`)}`} target="_blank" rel="noopener noreferrer" aria-label={`Consultar por WhatsApp sobre ${item.name}, ${item.model}`}>Consultar por WhatsApp</a></div></div>
+    <h3>{item.name}</h3>
+  </article>)}</div>
+  <p class="catalog-note">Selección de {equipment.length} equipos con ficha disponible. Configuración y disponibilidad sujetas a consulta. Imágenes ilustrativas restauradas con IA.</p>
+</section>

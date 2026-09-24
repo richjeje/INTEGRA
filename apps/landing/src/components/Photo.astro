@@ -1,0 +1,43 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import images from '../data/images.json';
+
+interface Props { 
+  name: keyof typeof images; 
+  alt: string; 
+  class?: string; 
+  eager?: boolean;
+  sizes?: string;
+}
+
+const { 
+  name, 
+  alt, 
+  class: className, 
+  eager = false,
+  sizes = '(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 800px'
+} = Astro.props;
+
+const [width, height] = images[name];
+
+const publicDir = path.join(process.cwd(), 'public');
+const standardPath = path.join(publicDir, 'equipos', `${name}.webp`);
+const hasStandard = fs.existsSync(standardPath);
+
+const src = `/equipos/hd/${name}.webp`;
+const srcset = hasStandard 
+  ? `/equipos/${name}.webp ${Math.round(width / 2)}w, /equipos/hd/${name}.webp ${width}w` 
+  : undefined;
+---
+<img 
+  src={src} 
+  srcset={srcset}
+  sizes={srcset ? sizes : undefined}
+  alt={alt} 
+  class={className} 
+  width={width} 
+  height={height} 
+  loading={eager ? 'eager' : 'lazy'} 
+  decoding="async" 
+/>

@@ -1,0 +1,39 @@
+---
+import Photo from './Photo.astro';
+interface Props { stage?: 'systems' | 'after'; }
+const { stage = 'systems' } = Astro.props;
+const whatsappMessage = encodeURIComponent('Hola, me interesa un proyecto llave en mano de ingeniería e integración con Integra.');
+---
+{stage === 'systems' && <>
+<section id="sistemas" class="section transport-explorer" aria-labelledby="transport-title"><div class="shell">
+  <div class="custom-engineering-heading" data-reveal>
+    <div><p class="eyebrow red">Ingeniería creada para tu operación</p><h2 id="transport-title">No partes de un modelo.<br />Partimos de tu proceso.</h2></div>
+    <p class="section-copy">Tu producto, espacio, ritmo y forma de operar definen la solución. Nosotros seleccionamos y desarrollamos la tecnología necesaria para convertir esos datos en un sistema único.</p>
+  </div>
+
+  <div class="custom-engineering-board" data-reveal>
+    <div class="custom-engineering-visual" aria-label="Referencias visuales de soluciones desarrolladas a medida">
+      <figure class="custom-engineering-photo custom-engineering-photo--main"><Photo name="integra-dolly" alt="Carro industrial desarrollado para el manejo de una pieza específica" /></figure>
+      <figure class="custom-engineering-photo"><Photo name="integra-paileria" alt="Conjunto de fabricación especial adaptado a una operación industrial" /></figure>
+      <figure class="custom-engineering-photo"><Photo name="integra-racks" alt="Sistema de soporte para organizar y proteger componentes" /></figure>
+      <p><span>Referencia visual</span>La forma final cambia con cada proyecto.</p>
+    </div>
+
+    <aside class="custom-engineering-brief" aria-label="Variables que definen cada solución">
+      <p class="eyebrow">Primero entendemos</p>
+      <h3>Tu operación define la ingeniería.</h3>
+      <div class="custom-engineering-points">
+        <div><strong>Producto y carga</strong><span>Qué mover, cómo sujetarlo y cómo protegerlo.</span></div>
+        <div><strong>Espacio disponible</strong><span>Recorrido, estaciones, accesos y restricciones de planta.</span></div>
+        <div><strong>Ritmo de producción</strong><span>Cadencia, acumulación y secuencia que necesita la línea.</span></div>
+        <div><strong>Control e integración</strong><span>Seguridad, automatización y comunicación con el proceso.</span></div>
+      </div>
+    </aside>
+  </div>
+</div></section>
+
+</>}
+
+{stage === 'after' && <>
+<section id="brief-integra" class="section project-brief project-brief--integra"><div class="shell project-cta"><div><p class="eyebrow">¿Tienes un proyecto en mente?</p><h2>Hablemos de tu solución.</h2><p>Cuéntanos qué necesita tu operación y comenzamos a desarrollar tu proyecto llave en mano.</p></div><a class="whatsapp-cta" href={`https://wa.me/524495411077?text=${whatsappMessage}`} target="_blank" rel="noopener noreferrer" aria-label="Hablar con Integra por WhatsApp"><svg class="whatsapp-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.1 3.9A11.3 11.3 0 0 0 2.3 17.5L1 22.8l5.4-1.4a11.3 11.3 0 0 0 5.4 1.4h.1A11.3 11.3 0 0 0 20.1 3.9Z"/><path d="M8.6 7.4c.3-.4.7-.4 1-.1l1.2 1.6c.2.3.2.6 0 .9l-.7.8c.7 1.5 1.8 2.5 3.3 3.1l.8-.8c.2-.2.6-.3.9-.1l1.6.9c.4.2.5.7.2 1.1-.5.8-1.5 1.2-2.5 1-3.6-.8-6.7-3.9-7.2-7.5-.1-.8.4-1.5 1.4-.9Z"/></svg><span>Hablemos por WhatsApp</span></a></div></section>
+</>}

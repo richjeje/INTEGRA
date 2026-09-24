@@ -1,0 +1,19 @@
+---
+import Photo from './Photo.astro';
+import images from '../data/images.json';
+const steps = [
+  { id: 'integra', number: '01', title: 'Diseñamos el sistema', description: 'Ingeniería, transportadores, automatización e integración.', image: 'integra-paileria', alt: 'Estructura metálica para integración industrial' },
+  { id: 'met', number: '02', title: 'Fabricamos la pieza', description: 'Corte, doblado, rolado y ensamble según el proyecto.', image: 'met-01-forza-ranger', alt: 'Cortadora láser de fibra FORZA Ranger' },
+  { id: 'rent', number: '03', title: 'Apoyamos la instalación', description: 'Equipos para altura, maniobra, energía y trabajo en campo.', image: 'rent-02-genie-articulada', alt: 'Plataforma articulada de elevación Genie' },
+];
+---
+<section class="division-preview group-flow section shell" aria-labelledby="division-title">
+  <div class="section-heading" data-reveal><div><p class="eyebrow red">Un proyecto, tres capacidades</p><h2 id="division-title">Del diseño a la instalación.</h2></div><p class="section-copy">Las unidades se conectan cuando el proyecto necesita ingeniería, manufactura y equipo.</p></div>
+  <div class="group-flow-grid">
+    {steps.map(item => <article class:list={['group-flow-step', `group-flow-step--${item.id}`]} data-reveal>
+      <div class="group-flow-image"><Photo name={item.image as keyof typeof images} alt={item.alt} /></div>
+      <div class="group-flow-copy"><span>{item.number}</span><h3>{item.title}</h3><p>{item.description}</p><a href={`/${item.id}/`}>Explorar esta unidad</a></div>
+    </article>)}
+  </div>
+  <p class="catalog-note">Las imágenes de proyecto y equipos son referencias ilustrativas mejoradas con IA.</p>
+</section>

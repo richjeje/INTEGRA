@@ -1,0 +1,57 @@
+---
+import Brand from './Brand.astro';
+interface Props { brand?: 'home' | 'integra' | 'met' | 'rent'; }
+const { brand = 'home' } = Astro.props;
+const messages = {
+  home: 'Hola, quiero conversar sobre un proyecto con Integra.',
+  integra: 'Hola, me interesa un proyecto de ingeniería e integración con Integra.',
+  met: 'Hola, me interesa consultar servicios y capacidades de Integra Met.',
+  rent: 'Hola, me interesa consultar la renta de equipo de Integra Rent.',
+};
+const content = {
+  home: {
+    label: 'Integra Group',
+    title: 'Tres especialidades para llevar tu proyecto más lejos.',
+    description: 'Ingeniería e integración, manufactura en metal y renta de equipo para responder a distintas etapas de una operación industrial.',
+    links: [['#inicio','Inicio'],['#empresas','Empresas'],['#por-que','Por qué Integra'],['#equipo','Equipo']],
+  },
+  integra: {
+    label: 'Ingeniería e integración',
+    title: 'Conectamos la idea con la operación.',
+    description: 'Diseño, fabricación, automatización, instalación y puesta en marcha de soluciones industriales llave en mano.',
+    links: [['#integra','Proceso'],['#sistemas','Soluciones a medida'],['#galeria','Galería'],['#brief-integra','Iniciar proyecto']],
+  },
+  met: {
+    label: 'Manufactura en metal',
+    title: 'Tu pieza comienza con una necesidad concreta.',
+    description: 'Corte láser, doblado CNC, rolado de perfiles y fabricación de conjuntos definidos para cada proyecto.',
+    links: [['#proceso-laser','Corte láser'],['#proceso-doblado','Doblado CNC'],['#proceso-rolado','Rolado'],['#brief-met','Solicitar cotización']],
+  },
+  rent: {
+    label: 'Equipo para instalación',
+    title: 'El equipo correcto para avanzar con seguridad.',
+    description: 'Opciones de elevación, carga, energía y herramientas sujetas a capacidad, configuración y disponibilidad.',
+    links: [['#rent','Elegir equipo'],['#preguntas','Antes de reservar'],['#brief-rent','Preparar renta']],
+  },
+};
+const current = content[brand];
+const message = encodeURIComponent(messages[brand]);
+const whatsapp = `https://wa.me/524495411077?text=${message}`;
+const brandUnit = brand === 'met' ? 'met' : brand === 'rent' ? 'rent' : '';
+---
+<footer id="contacto" class:list={['site-footer', `site-footer--${brand}`]}>
+  <div class="footer-shell shell">
+    {brand === 'home' && <div class="footer-cta">
+      <div><p>{current.label}</p><h2>{current.title}</h2></div>
+      <a href={whatsapp} target="_blank" rel="noopener noreferrer"><span>Conversar por WhatsApp</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.1 3.9A11.3 11.3 0 0 0 2.3 17.5L1 22.8l5.4-1.4a11.3 11.3 0 0 0 5.4 1.4h.1A11.3 11.3 0 0 0 20.1 3.9Z"/><path d="M8.6 7.4c.3-.4.7-.4 1-.1l1.2 1.6c.2.3.2.6 0 .9l-.7.8c.7 1.5 1.8 2.5 3.3 3.1l.8-.8c.2-.2.6-.3.9-.1l1.6.9c.4.2.5.7.2 1.1-.5.8-1.5 1.2-2.5 1-3.6-.8-6.7-3.9-7.2-7.5-.1-.8.4-1.5 1.4-.9Z"/></svg></a>
+    </div>}
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="/" aria-label="Volver al inicio"><Brand unit={brandUnit} inverse={brand === 'met'} /></a><p>{current.description}</p><span>Control total en movimiento</span></div>
+      <nav class="footer-column" aria-label="Navegación de esta página"><h3>Explorar</h3>{current.links.map(([href,label]) => <a href={href}>{label}</a>)}</nav>
+      <nav class="footer-column" aria-label="Nuestras empresas"><h3>Empresas</h3><a href="/integra/">Integra</a><a href="/met/">Integra Met</a><a href="/rent/">Integra Rent</a></nav>
+      <div class="footer-column footer-contact"><h3>Contacto</h3><a href="tel:+524495411077">+52 449 541 1077</a><a href={whatsapp} target="_blank" rel="noopener noreferrer">WhatsApp</a><p>Aguascalientes, México</p><small>Atención a proyectos industriales</small></div>
+    </div>
+    <div class="footer-bottom"><span>© {new Date().getFullYear()} Integra. Todos los derechos reservados.</span><span>Ingeniería · Manufactura · Equipo</span></div>
+  </div>
+</footer>
+<aside class="contact-dock" aria-label="Contacto por WhatsApp"><span class="contact-context" id="contact-context" aria-live="polite"></span><a id="whatsapp" href={whatsapp} target="_blank" rel="noopener noreferrer" aria-label="Abrir conversación en WhatsApp"><svg class="whatsapp-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.1 3.9A11.3 11.3 0 0 0 2.3 17.5L1 22.8l5.4-1.4a11.3 11.3 0 0 0 5.4 1.4h.1A11.3 11.3 0 0 0 20.1 3.9Z"/><path d="M8.6 7.4c.3-.4.7-.4 1-.1l1.2 1.6c.2.3.2.6 0 .9l-.7.8c.7 1.5 1.8 2.5 3.3 3.1l.8-.8c.2-.2.6-.3.9-.1l1.6.9c.4.2.5.7.2 1.1-.5.8-1.5 1.2-2.5 1-3.6-.8-6.7-3.9-7.2-7.5-.1-.8.4-1.5 1.4-.9Z"/></svg><span class="whatsapp-label">WhatsApp</span></a></aside>

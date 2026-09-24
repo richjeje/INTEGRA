@@ -1,0 +1,308 @@
+[
+  {
+    "id": "integra-dolly",
+    "generated_source": "C:\\Users\\ricar\\.codex\\generated_images\\01a0c711-ff83-7702-8a86-90d86ac02fda\\exec-fbc00574-c535-4543-98ab-6991d6181659.png",
+    "prompt": "Image 1 is the EDIT TARGET, not inspiration. Conservative photographic restoration/upscale of the same image for a professional industrial website. Documentary photograph of yellow industrial dollies. Preserve exact carts, number and shape of supports, wheels, tow bars and background. Remove only blank white slide border; do NOT crop actual photograph content. Increase usable resolution to approximately 2400 pixels wide (landscape); preserve source aspect ratio. Reduce compression and pixelation, improve focus and subtle natural contrast only. Keep exact identity, silhouette, mechanical design, colors, viewpoint, layout, object count, and surrounding scene. Do not add, remove or reinterpret any components, fixtures, text, logos or people. Do not invent illegible labels. No stylization, no CGI gloss, no compositional redesign. Preserve natural photographic texture; no artificial sharpen halos. This is an image-quality edit, not a new image design.",
+    "review_only": false,
+    "original_size": [
+      1340,
+      935
+    ],
+    "restored_size": [
+      1501,
+      1047
+    ],
+    "master": "docs/equipos/restauradas/master/integra-dolly.png",
+    "status": "Uso ilustrativo; no evidencia técnica",
+    "web": "apps/landing/public/equipos/hd/integra-dolly.webp"
+  },
+  {
+    "id": "integra-paileria",
+    "generated_source": "C:\\Users\\ricar\\.codex\\generated_images\\01a0c711-ff83-7702-8a86-90d86ac02fda\\exec-5be7733f-bcc7-4aab-b1d0-12f6b3687d6f.png",
+    "prompt": "Image 1 is the EDIT TARGET, not inspiration. Conservative photographic restoration/upscale of the same image for a professional industrial website. Documentary photograph of steel frames inside a workshop. Preserve ALL existing beam geometry, beam count and locations, room, walls, floor, roof and camera perspective. Remove only blank white slide border. Increase usable resolution to approximately 2400 pixels wide (landscape); preserve source aspect ratio. Reduce compression and pixelation, improve focus and subtle natural contrast only. Keep exact identity, silhouette, mechanical design, colors, viewpoint, layout, object count, and surrounding scene. Do not add, remove or reinterpret any components, fixtures, text, logos or people. Do not invent illegible labels. No stylization, no CGI gloss, no compositional redesign. Preserve natural photographic texture; no artificial sharpen halos. This is an image-quality edit, not a new image design.",
+    "review_only": false,
+    "original_size": [
+      1600,
+      972
+    ],
+    "restored_size": [
+      1609,
+      978
+    ],
+    "master": "docs/equipos/restauradas/master/integra-paileria.png",
+    "status": "Uso ilustrativo; no evidencia técnica",
+    "web": "apps/landing/public/equipos/hd/integra-paileria.webp"
+  },
+  {
+    "id": "integra-racks",
+    "generated_source": "C:\\Users\\ricar\\.codex\\generated_images\\01a0c711-ff83-7702-8a86-90d86ac02fda\\exec-68501424-b0fb-4ae6-a282-340497fe7515.png",
+    "prompt": "Restore and upscale the attached low-resolution photograph conservatively. This is an EDIT TARGET, not inspiration. Preserve the exact equipment, all mechanical components, proportions, pose, viewpoint, colors and background. Improve compression artifacts, blur and pixelation only. Do not invent text, brand logos, mechanical details or objects. Keep the same aspect ratio. Target 2048 pixels on the longer side with natural photographic detail, no CGI or stylization. Preserve the industrial storage structure and setting precisely; trim blank slide margins only.",
+    "review_only": false,
+    "original_size": [
+      1425,
+      935
+    ],
+    "restored_size": [
+      1548,
+      1016
+    ],
+    "master": "docs/equipos/restauradas/master/integra-racks.png",
+    "status": "Uso ilustrativo; no evidencia técnica",
+    "web": "apps/landing/public/equipos/hd/integra-racks.webp"
+  },
+  {
+    "id": "met-01-forza-ranger",
+    "generated_source": "C:\\Users\\ricar\\.codex\\generated_images\\01a0c711-ff83-7702-8a86-90d86ac02fda\\exec-aa16a574-710e-47e1-ae54-d0405da620c5.png",
+    "prompt": "Image 1 is the EDIT TARGET, not inspiration. Conservative photographic restoration/upscale of the same image for a professional industrial website. CNC fiber laser cutter FORZA Ranger. Preserve all original FORZA logos and readable labels verbatim, exact bed, gantry, head, supports and control display. Increase usable resolution to approximately 2400 pixels wide (landscape); preserve source aspect ratio. Reduce compression and pixelation, improve focus and subtle natural contrast only. Keep exact identity, silhouette, mechanical design, colors, viewpoint, layout, object count, and surrounding scene. Do not add, remove or reinterpret any components, fixtures, text, logos or people. Do not invent illegible labels. No stylization, no CGI gloss, no compositional redesign. Preserve natural photographic texture; no artificial sharpen halos. This is an image-quality edit, not a new image design.",
+    "review_only": false,
+    "original_size": [
+      1600,
+      751
+    ],
+    "restored_size": [
+      1829,
+      860
+    ],
+    "master": "docs/equipos/restauradas/master/met-01-forza-ranger.png",
+    "status": "Uso ilustrativo; no evidencia técnica",
+    "web": "apps/landing/public/equipos/hd/met-01-forza-ranger.webp"
+  },
+  {
+    "id": "met-02-forza-press",
+    "generated_source": "C:\\Users\\ricar\\.codex\\generated_images\\01a0c711-ff83-7702-8a86-90d86ac02fda\\exec-210ed0b6-3259-48b4-9fd2-e7c2c428b54d.png",
+    "prompt": "Image 1 is the EDIT TARGET, not inspiration. Conservative photographic restoration/upscale of the same image for a professional industrial website. Hydraulic press brake FORZA Press. Preserve 'FORZA', 'Press', 'Professional Power' branding exactly as visible, the entire front structure, tooling and side control arm. Increase usable resolution to approximately 2400 pixels wide (landscape); preserve source aspect ratio. Reduce compression and pixelation, improve focus and subtle natural contrast only. Keep exact identity, silhouette, mechanical design, colors, viewpoint, layout, object count, and surrounding scene. Do not add, remove or reinterpret any components, fixtures, text, logos or people. Do not invent illegible labels. No stylization, no CGI gloss, no compositional redesign. Preserve natural photographic texture; no artificial sharpen halos. This is an image-quality edit, not a new image design.",
+    "review_only": false,
+    "original_size": [
+      844,
+      551
+    ],
+    "restored_size": [
+      1553,
+      1013
+    ],
+    "master": "docs/equipos/restauradas/master/met-02-forza-press.png",
+    "status": "Uso ilustrativo; no evidencia técnica",
+    "web": "apps/landing/public/equipos/hd/met-02-forza-press.webp"
+  },
+  {
+    "id": "met-03-roladora-horizontal",
+    "generated_source": "C:\\Users\\ricar\\.codex\\generated_images\\01a0c711-ff83-7702-8a86-90d86ac02fda\\exec-082fff49-b9b2-46b2-8e61-a1346e53bd85.png",
+    "prompt": "Restore and upscale the attached low-resolution photograph conservatively. This is an EDIT TARGET, not inspiration. Preserve the exact equipment, all mechanical components, proportions, pose, viewpoint, colors and background. Improve compression artifacts, blur and pixelation only. Do not invent text, brand logos, mechanical details or objects. Keep the same aspect ratio. Target 2048 pixels on the longer side with natural photographic detail, no CGI or stylization. Keep the entire equipment visible on the existing background.",
+    "review_only": false,
+    "original_size": [
+      1024,
+      576
+    ],
+    "restored_size": [
+      1672,
+      941
+    ],
+    "master": "docs/equipos/restauradas/master/met-03-roladora-horizontal.png",
+    "status": "Uso ilustrativo; no evidencia técnica",
+    "web": "apps/landing/public/equipos/hd/met-03-roladora-horizontal.webp"
+  },
+  {
+    "id": "met-03-roladora-vertical",
+    "generated_source": "C:\\Users\\ricar\\.codex\\generated_images\\01a0c711-ff83-7702-8a86-90d86ac02fda\\exec-97a020a0-0f9a-44f5-b467-02713748fb93.png",
+    "prompt": "Restore and upscale the attached low-resolution photograph conservatively. This is an EDIT TARGET, not inspiration. Preserve the exact equipment, all mechanical components, proportions, pose, viewpoint, colors and background. Improve compression artifacts, blur and pixelation only. Do not invent text, brand logos, mechanical details or objects. Keep the same aspect ratio. Target 2048 pixels on the longer side with natural photographic detail, no CGI or stylization. Keep the entire equipment visible on the existing background.",
+    "review_only": false,
+    "original_size": [
+      591,
+      859
+    ],
+    "restored_size": [
+      1040,
+      1512
+    ],
+    "master": "docs/equipos/restauradas/master/met-03-roladora-vertical.png",
+    "status": "Uso ilustrativo; no evidencia técnica",
+    "web": "apps/landing/public/equipos/hd/met-03-roladora-vertical.webp"
+  },
+  {
+    "id": "rent-01-zoomlion-tijera",
+    "generated_source": "C:\\Users\\ricar\\.codex\\generated_images\\01a0c711-ff83-7702-8a86-90d86ac02fda\\exec-2dbc19d6-8e67-42e8-8603-33d2bdb8dd1b.png",
+    "prompt": "Restore and upscale the attached low-resolution photograph conservatively. This is an EDIT TARGET, not inspiration. Preserve the exact equipment, all mechanical components, proportions, pose, viewpoint, colors and background. Improve compression artifacts, blur and pixelation only. Do not invent text, brand logos, mechanical details or objects. Keep the same aspect ratio. Target 2048 pixels on the longer side with natural photographic detail, no CGI or stylization. Keep the entire equipment visible on the existing background.",
+    "review_only": false,
+    "original_size": [
+      141,
+      256
+    ],
+    "restored_size": [
+      931,
+      1689
+    ],
+    "master": "docs/equipos/restauradas/master/rent-01-zoomlion-tijera.png",
+    "status": "Uso ilustrativo; no evidencia técnica",
+    "web": "apps/landing/public/equipos/hd/rent-01-zoomlion-tijera.webp"
+  },
+  {
+    "id": "rent-02-genie-articulada",
+    "generated_source": "C:\\Users\\ricar\\.codex\\generated_images\\01a0c711-ff83-7702-8a86-90d86ac02fda\\exec-cf9811a0-5fc9-48c6-b0f7-bc3569c968c0.png",
+    "prompt": "Conservative restoration of exact Genie source photo; white background; preserve design, proportions and viewpoint; target 1536px tall. Built-in tool imagegen.",
+    "review_only": false,
+    "original_size": [
+      205,
+      261
+    ],
+    "restored_size": [
+      1111,
+      1415
+    ],
+    "master": "docs/equipos/restauradas/master/rent-02-genie-articulada.png",
+    "status": "Uso ilustrativo; no evidencia técnica",
+    "web": "apps/landing/public/equipos/hd/rent-02-genie-articulada.webp"
+  },
+  {
+    "id": "rent-03-broderson-grua",
+    "generated_source": "C:\\Users\\ricar\\.codex\\generated_images\\01a0c711-ff83-7702-8a86-90d86ac02fda\\exec-61ed5a15-0a05-4835-bd3f-4327fb705ed2.png",
+    "prompt": "Image 1 is the edit target. Improve resolution and clarity of this exact catalog photograph, preserving its precise composition, equipment silhouette, mechanical geometry, proportions, colors, viewpoint, text and markings. Remove pixelation and compression artifacts with conservative photographic restoration. Do not replace the equipment with a similar model; do not invent logos, labels or mechanical parts. Keep the entire photographed equipment visible, same aspect ratio and background. Aim for 2048 pixels on the long edge with natural photographic detail. No new graphics or text.",
+    "review_only": false,
+    "original_size": [
+      229,
+      318
+    ],
+    "restored_size": [
+      1064,
+      1478
+    ],
+    "master": "docs/equipos/restauradas/master/rent-03-broderson-grua.png",
+    "status": "Uso ilustrativo; no evidencia técnica",
+    "web": "apps/landing/public/equipos/hd/rent-03-broderson-grua.webp"
+  },
+  {
+    "id": "rent-04-torre-iluminacion",
+    "generated_source": "C:\\Users\\ricar\\.codex\\generated_images\\01a0c711-ff83-7702-8a86-90d86ac02fda\\exec-b5dd1128-6db4-4473-a767-5bc3a3ee2b9e.png",
+    "prompt": "Image 1 is the edit target. Improve resolution and clarity of this exact catalog photograph, preserving its precise composition, equipment silhouette, mechanical geometry, proportions, colors, viewpoint, text and markings. Remove pixelation and compression artifacts with conservative photographic restoration. Do not replace the equipment with a similar model; do not invent logos, labels or mechanical parts. Keep the entire photographed equipment visible, same aspect ratio and background. Aim for 2048 pixels on the long edge with natural photographic detail. No new graphics or text.\nTargeted second pass: Edit only the model lettering beneath SEGAMAC on the red housing in this image. It must read exactly \"SLT-88D\", with a final capital letter D, not a zero or O. Preserve every other pixel and part of the photograph: framing, machine, lamps, wheels, colors, geometry, lighting and background. No other changes.",
+    "review_only": false,
+    "original_size": [
+      360,
+      435
+    ],
+    "restored_size": [
+      1141,
+      1378
+    ],
+    "master": "docs/equipos/restauradas/master/rent-04-torre-iluminacion.png",
+    "status": "Uso ilustrativo; no evidencia técnica",
+    "web": "apps/landing/public/equipos/hd/rent-04-torre-iluminacion.webp"
+  },
+  {
+    "id": "rent-05-montacargas",
+    "generated_source": "C:\\Users\\ricar\\.codex\\generated_images\\01a0c711-ff83-7702-8a86-90d86ac02fda\\exec-49b95299-79a6-4070-ac6d-e7d40c893e75.png",
+    "prompt": "Image 1 is the edit target. Improve resolution and clarity of this exact catalog photograph, preserving its precise composition, equipment silhouette, mechanical geometry, proportions, colors, viewpoint, text and markings. Remove pixelation and compression artifacts with conservative photographic restoration. Do not replace the equipment with a similar model; do not invent logos, labels or mechanical parts. Keep the entire photographed equipment visible, same aspect ratio and background. Aim for 2048 pixels on the long edge with natural photographic detail. No new graphics or text.",
+    "review_only": false,
+    "original_size": [
+      515,
+      346
+    ],
+    "restored_size": [
+      1531,
+      1027
+    ],
+    "master": "docs/equipos/restauradas/master/rent-05-montacargas.png",
+    "status": "Uso ilustrativo; no evidencia técnica",
+    "web": "apps/landing/public/equipos/hd/rent-05-montacargas.webp"
+  },
+  {
+    "id": "rent-06-miller-deltaweld",
+    "generated_source": "C:\\Users\\ricar\\.codex\\generated_images\\01a0c711-ff83-7702-8a86-90d86ac02fda\\exec-48fb7495-07f2-4d55-bff4-d63dc5c49b55.png",
+    "prompt": "Image 1 is the EDIT TARGET. Conservatively restore/upscale this exact product photograph. Remove compression artifacts, pixelation and blur; produce clear natural photographic detail at approximately 2048 pixels on the longer edge. Preserve exact composition, viewpoint, colors, silhouette, all visible parts, accessories, cable placement, logo placement and readable lettering. Do not invent missing details or unreadable lettering. Do not substitute another model or redraw equipment geometry. Keep the same aspect ratio and clean white background; do not add new graphics or text. No CGI or stylization.",
+    "review_only": true,
+    "original_size": [
+      347,
+      427
+    ],
+    "restored_size": [
+      1131,
+      1391
+    ],
+    "master": "docs/equipos/restauradas/revision/rent-06-miller-deltaweld.png",
+    "status": "No usar: etiquetas reconstruidas incorrectamente",
+    "web": null
+  },
+  {
+    "id": "rent-07-dewalt-rompedora",
+    "generated_source": "C:\\Users\\ricar\\.codex\\generated_images\\01a0c711-ff83-7702-8a86-90d86ac02fda\\exec-1a8698c0-2912-4b13-b683-c1e513476b80.png",
+    "prompt": "Image 1 is the EDIT TARGET. Conservatively restore/upscale this exact product photograph. Remove compression artifacts, pixelation and blur; produce clear natural photographic detail at approximately 2048 pixels on the longer edge. Preserve exact composition, viewpoint, colors, silhouette, all visible parts, accessories, cable placement, logo placement and readable lettering. Do not invent missing details or unreadable lettering. Do not substitute another model or redraw equipment geometry. Keep the same aspect ratio and clean white background; do not add new graphics or text. No CGI or stylization.",
+    "review_only": false,
+    "original_size": [
+      652,
+      320
+    ],
+    "restored_size": [
+      1791,
+      878
+    ],
+    "master": "docs/equipos/restauradas/master/rent-07-dewalt-rompedora.png",
+    "status": "Uso ilustrativo; no evidencia técnica",
+    "web": "apps/landing/public/equipos/hd/rent-07-dewalt-rompedora.webp"
+  },
+  {
+    "id": "rent-08-revolvedora",
+    "generated_source": "C:\\Users\\ricar\\.codex\\generated_images\\01a0c711-ff83-7702-8a86-90d86ac02fda\\exec-c8dd9aed-1b5b-45d5-9174-c8d063b77767.png",
+    "prompt": "Image 1 is the EDIT TARGET. Conservatively restore/upscale this exact product photograph. Remove compression artifacts, pixelation and blur; produce clear natural photographic detail at approximately 2048 pixels on the longer edge. Preserve exact composition, viewpoint, colors, silhouette, all visible parts, accessories, cable placement, logo placement and readable lettering. Do not invent missing details or unreadable lettering. Do not substitute another model or redraw equipment geometry. Keep the same aspect ratio and clean white background; do not add new graphics or text. No CGI or stylization.",
+    "review_only": false,
+    "original_size": [
+      573,
+      534
+    ],
+    "restored_size": [
+      1299,
+      1211
+    ],
+    "master": "docs/equipos/restauradas/master/rent-08-revolvedora.png",
+    "status": "Uso ilustrativo; no evidencia técnica",
+    "web": "apps/landing/public/equipos/hd/rent-08-revolvedora.webp"
+  },
+  {
+    "id": "rent-09-infra-soldadora",
+    "generated_source": "C:\\Users\\ricar\\.codex\\generated_images\\01a0c711-ff83-7702-8a86-90d86ac02fda\\exec-0248f71a-047b-4854-a2a5-05175210df28.png",
+    "prompt": "Image 1 is the EDIT TARGET. Conservatively restore/upscale this exact product photograph. Remove compression artifacts, pixelation and blur; produce clear natural photographic detail at approximately 2048 pixels on the longer edge. Preserve exact composition, viewpoint, colors, silhouette, all visible parts, accessories, cable placement, logo placement and readable lettering. Do not invent missing details or unreadable lettering. Do not substitute another model or redraw equipment geometry. Keep the same aspect ratio and clean white background; do not add new graphics or text. No CGI or stylization.",
+    "review_only": true,
+    "original_size": [
+      456,
+      451
+    ],
+    "restored_size": [
+      1254,
+      1254
+    ],
+    "master": "docs/equipos/restauradas/revision/rent-09-infra-soldadora.png",
+    "status": "No usar: etiquetas reconstruidas incorrectamente",
+    "web": null
+  },
+  {
+    "id": "rent-10-bobcat-modelo-por-confirmar",
+    "generated_source": "C:\\Users\\ricar\\.codex\\generated_images\\01a0c711-ff83-7702-8a86-90d86ac02fda\\exec-4b1ec866-2a8d-4796-9d03-ed4022ccb656.png",
+    "prompt": "Image 1 is the EDIT TARGET. Conservatively restore/upscale this exact product photograph. Remove compression artifacts, pixelation and blur; produce clear natural photographic detail at approximately 2048 pixels on the longer edge. Preserve exact composition, viewpoint, colors, silhouette, all visible parts, accessories, cable placement, logo placement and readable lettering. Do not invent missing details or unreadable lettering. Do not substitute another model or redraw equipment geometry. Keep the same aspect ratio and clean white background; do not add new graphics or text. No CGI or stylization.",
+    "review_only": true,
+    "original_size": [
+      355,
+      386
+    ],
+    "restored_size": [
+      1203,
+      1308
+    ],
+    "master": "docs/equipos/restauradas/revision/rent-10-bobcat-modelo-por-confirmar.png",
+    "status": "No usar: etiquetas reconstruidas incorrectamente",
+    "web": null
+  },
+  {
+    "id": "rent-11-esab-ruffian",
+    "generated_source": "C:\\Users\\ricar\\.codex\\generated_images\\01a0c711-ff83-7702-8a86-90d86ac02fda\\exec-8fb2e429-f1f5-4268-993b-16be75991ec0.png",
+    "prompt": "Image 1 is the EDIT TARGET. Conservatively restore/upscale this exact product photograph. Remove compression artifacts, pixelation and blur; produce clear natural photographic detail at approximately 2048 pixels on the longer edge. Preserve exact composition, viewpoint, colors, silhouette, all visible parts, accessories, cable placement, logo placement and readable lettering. Do not invent missing details or unreadable lettering. Do not substitute another model or redraw equipment geometry. Keep the same aspect ratio and clean white background; do not add new graphics or text. No CGI or stylization.",
+    "review_only": true,
+    "original_size": [
+      458,
+      384
+    ],
+    "restored_size": [
+      1369,
+      1149
+    ],
+    "master": "docs/equipos/restauradas/revision/rent-11-esab-ruffian.png",
+    "status": "No usar: etiquetas reconstruidas incorrectamente",
+    "web": null
+  }
+]

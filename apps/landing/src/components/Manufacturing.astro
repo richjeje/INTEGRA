@@ -1,0 +1,53 @@
+---
+import { processes } from '../data/catalog.js';
+import { materials, profiles } from '../data/met';
+import Photo from './Photo.astro';
+import images from '../data/images.json';
+const labels = { laser: 'Corte láser', doblado: 'Doblado', rolado: 'Rolado', soldadura: 'Soldadura' };
+const processResources = {
+  laser: {
+    label: 'Materiales para corte láser',
+    description: 'Espesores de corte declarados para la FORZA Ranger N1530P60.',
+    items: materials.map(material => ({ name: material.name, image: material.image, value: material.laser })),
+  },
+  doblado: {
+    label: 'Materiales para doblado CNC',
+    description: 'Capacidad a longitud completa según la ficha de la FORZA Press FXP42T250.',
+    items: materials.filter(material => material.bend).map(material => ({ name: material.name, image: material.image, value: material.bend! })),
+  },
+  rolado: {
+    label: 'Perfiles para rolado',
+    description: 'La viabilidad depende de sección, material, orientación y radio solicitado.',
+    items: profiles.map(profile => ({ name: profile.name, image: profile.image, value: profile.review })),
+  },
+};
+---
+<section id="met" class="metal section" aria-labelledby="met-title">
+  <div class="shell">
+    <div class="section-heading met-process-heading" data-reveal><div><p class="eyebrow">Integra Met / Procesos</p><h2 id="met-title">Del material<br />a la pieza terminada.</h2></div><p class="section-copy">Recorre nuestras capacidades de manufactura. Cada bloque muestra el equipo, su alcance documentado y los datos necesarios para revisar tu pieza.</p></div>
+    <div class="process-zigzag">
+      {Object.entries(processes).map(([id, process], index) => {
+        const resources = processResources[id as keyof typeof processResources];
+        return <article id={`proceso-${id}`} class:list={['process-step', { 'process-step--reverse': index % 2 === 1 }]} data-reveal>
+        <figure class="process-step-photo">{id === 'rolado' ? <img src="/equipos/rollbend-roladora.png" alt="Roladora de perfiles Rollbend" width="1101" height="1405" loading="lazy" decoding="async" /> : id === 'soldadura' ? <img src="/equipos/integra-rack-cutout.png" alt="Bastidor metálico negro y amarillo fabricado a medida" width="1448" height="1086" loading="lazy" decoding="async" /> : <Photo name={process.image as keyof typeof images} alt={`${process.model}; imagen ilustrativa restaurada`} />}</figure>
+        <div class="process-step-copy">
+          <div class="process-step-title"><span>{String(index + 1).padStart(2,'0')}</span><div><p class="eyebrow">{labels[id as keyof typeof labels]}</p><h3>{process.title}</h3></div></div>
+          <p class="process-intro">{process.body}</p>
+          <dl class="process-capacities">{process.stats.map(([value, label]) => <div><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
+          <p class="process-condition">{process.note}</p>
+          {!resources && <div class="process-spec-sheet"><p>Especificaciones documentadas</p><dl>{process.details.map(([key, value]) => <div><dt>{key}</dt><dd>{value}</dd></div>)}</dl><small>{process.foot}</small></div>}
+          <a class="process-inquiry" href={`https://wa.me/524495411077?text=${encodeURIComponent(`Hola, me interesa el proceso de ${process.title} de Integra Met. ¿Me pueden compartir información y ayudar con una cotización para mi proyecto?`)}`} target="_blank" rel="noopener noreferrer" aria-label={`Consultar ${process.title} por WhatsApp`}>Consultar proceso por WhatsApp</a>
+        </div>
+        {resources && <div class="process-resources">
+          <div class="process-resources-heading"><h4>{resources.label}</h4><span>{resources.description}</span></div>
+          <div class="process-resource-grid">{resources.items.map(item => <article class="process-resource-card">
+            <figure><img src={item.image} alt={item.name} loading="lazy" decoding="async" /></figure>
+            <div><strong>{item.name}</strong><span>{item.value}</span></div>
+          </article>)}</div>
+          <small class="process-resources-foot">{process.foot}</small>
+        </div>}
+      </article>;
+      })}
+    </div>
+  </div>
+</section>

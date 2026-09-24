@@ -1,0 +1,17 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CompanyHero from '../../components/CompanyHero.astro';
+import Rental from '../../components/Rental.astro';
+import Footer from '../../components/Footer.astro';
+import RentExpansion from '../../components/RentExpansion.astro';
+import TrustBand from '../../components/TrustBand.astro';
+import RentDetails from '../../components/RentDetails.astro';
+---
+<Layout brand="rent" title="Integra Rent | Renta de equipo para instalación" description="Consulta equipos de elevación, maniobra, energía y herramientas para tus trabajos de instalación y mantenimiento en Aguascalientes.">
+  <CompanyHero brand="rent" image="rent-02-genie-articulada" alt="Plataforma articulada de elevación, imagen de catálogo ilustrativa" eyebrow="Equipo para instalación y mantenimiento" headline="El equipo correcto." highlight="Listo para tu proyecto." description="Consulta opciones de elevación, carga, iluminación y herramientas para planear tu trabajo." contact="la renta de equipo de Integra Rent" target="#rent" secondary="Ver selección de equipos" />
+  <RentDetails />
+  <Rental />
+  <TrustBand brand="rent" />
+  <RentExpansion stage="after" />
+  <Footer brand="rent" />
+</Layout>

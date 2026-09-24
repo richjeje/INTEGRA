@@ -1,0 +1,38 @@
+---
+import Photo from './Photo.astro';
+---
+<section id="integra" class="section shell engineering engineering--story" aria-labelledby="engineering-title">
+  <div class="engineering-copy" data-reveal>
+    <div><h2 id="engineering-title">Mira cómo toma forma<br />tu solución.</h2></div>
+    <div class="engineering-summary"><p class="section-copy">Partimos de tu necesidad y avanzamos contigo hasta entregar el sistema programado, probado y operando. Selecciona cada etapa para recorrer el proceso.</p></div>
+  </div>
+
+  <div class="journey" data-journey data-reveal>
+    <div class="journey-stage">
+      <figure id="journey-design" class="journey-frame journey-frame--design is-active" data-journey-frame="0" aria-labelledby="journey-tab-design">
+        <img class="design-assembly" src="/equipos/diseno-gripper-monocromo.png" alt="Diseño CAD monocromático de un herramental industrial con cuatro grippers" width="1558" height="1009" loading="eager" decoding="async" />
+        <img class="design-components" src="/equipos/diseno-componentes-monocromo.png" alt="Dos componentes metálicos diseñados para fabricación" width="1426" height="1103" loading="eager" decoding="async" />
+      </figure>
+
+      <figure id="journey-build" class="journey-frame journey-frame--build" data-journey-frame="1" aria-labelledby="journey-tab-build" aria-hidden="true">
+        <img src="/equipos/fabricacion-industrial-sin-marcas.png" alt="Operario durante la fabricación de un componente metálico en maquinaria industrial" width="1586" height="992" loading="eager" decoding="async" />
+      </figure>
+
+      <figure id="journey-program" class="journey-frame journey-frame--program" data-journey-frame="2" aria-labelledby="journey-tab-program" aria-hidden="true">
+        <img src="/equipos/programacion-tablero-control.png" alt="Tablero eléctrico industrial con variadores, protecciones y control programable" width="1586" height="992" loading="eager" decoding="async" />
+      </figure>
+
+      <figure id="journey-install" class="journey-frame" data-journey-frame="3" aria-labelledby="journey-tab-install" aria-hidden="true">
+        <Photo name="integra-transportador-aereo" alt="Sistema de transporte aéreo instalado en una planta industrial" eager />
+      </figure>
+    </div>
+
+    <div class="journey-timeline" role="tablist" aria-label="Etapas del proyecto">
+      <span class="journey-progress" aria-hidden="true"><i data-journey-progress></i></span>
+      <button id="journey-tab-design" type="button" role="tab" aria-selected="true" aria-controls="journey-design" tabindex="0" data-journey-step="0"><span>01</span><strong>Diseñamos</strong><small>Necesidad, medidas y concepto</small></button>
+      <button id="journey-tab-build" type="button" role="tab" aria-selected="false" aria-controls="journey-build" tabindex="-1" data-journey-step="1"><span>02</span><strong>Fabricamos</strong><small>Producción, ensamble y control</small></button>
+      <button id="journey-tab-program" type="button" role="tab" aria-selected="false" aria-controls="journey-program" tabindex="-1" data-journey-step="2"><span>03</span><strong>Programamos</strong><small>Lógica, seguridad y pruebas</small></button>
+      <button id="journey-tab-install" type="button" role="tab" aria-selected="false" aria-controls="journey-install" tabindex="-1" data-journey-step="3"><span>04</span><strong>Instalamos</strong><small>Integración, pruebas y arranque</small></button>
+    </div>
+  </div>
+</section>

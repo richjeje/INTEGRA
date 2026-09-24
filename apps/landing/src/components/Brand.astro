@@ -1,0 +1,10 @@
+---
+interface Props { unit?: string; inverse?: boolean; }
+const { unit = '', inverse = false } = Astro.props;
+const key = unit === 'met' ? 'integra-met' : unit === 'rent' ? 'integra-rent' : 'integra';
+const assetKey = inverse && unit === 'met' ? 'integra-met-white' : key;
+const label = unit === 'met' ? 'Integra Met' : unit === 'rent' ? 'Integra Rent' : 'Integra';
+---
+<span class:list={['brand', `brand--${key}`]}>
+  <img class="brand-logo" src={`/brand/${assetKey}.svg`} alt={label} width={key === 'integra' ? 693 : key === 'integra-met' ? 409 : 410} height={key === 'integra' ? 302 : 207} />
+</span>

@@ -1,0 +1,12 @@
+---
+import Photo from './Photo.astro';
+const projects = [
+  ['integra-transportador-power-free', 'Transporte aéreo', 'Recorridos, acumulación y secuencias desarrollados alrededor del flujo de la planta.'],
+  ['integra-transportador-flat-top', 'Transferencia de ensamble', 'Sistemas de piso configurados para mover y posicionar cada producto.'],
+  ['integra-transportador-especial', 'Integración de estaciones', 'Estructuras, portadores y controles coordinados para una operación específica.'],
+] as const;
+---
+<section id="galeria" class="section project-gallery" aria-labelledby="gallery-title"><div class="shell">
+  <div class="section-heading"><div><p class="eyebrow red">Aplicaciones desarrolladas</p><h2 id="gallery-title">Cada proyecto responde a una operación distinta.</h2></div><p class="section-copy">Estas referencias muestran tipos de solución. Geometría, capacidad y control se vuelven a definir para cada cliente.</p></div>
+  <div class="project-gallery-grid">{projects.map(([image,title,copy]) => <article><figure><Photo name={image} alt={title} /></figure><div><h3>{title}</h3><p>{copy}</p></div></article>)}</div>
+</div></section>
