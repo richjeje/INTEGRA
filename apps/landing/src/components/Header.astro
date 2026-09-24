@@ -14,7 +14,7 @@ const contactTargets: Record<string, string> = { integra: '/integra/#brief-integ
 <a class="skip-link" href="#contenido">Ir al contenido</a>
 <header class:list={['site-header', { 'site-header--photo': photo, 'site-header--rent': brand === 'rent' }]}>
   <div class="shell header-inner">
-    <a class="home-link" href={currentPath} aria-label="Inicio"><Brand unit={brand === 'met' ? 'met' : brand === 'rent' ? 'rent' : ''} inverse={photo} /></a>
+    <a class="home-link" href={currentPath} aria-label="Inicio"><Brand unit={brand === 'met' ? 'met' : brand === 'rent' ? 'rent' : ''} inverse={false} /></a>
     <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav">Menú <span aria-hidden="true">+</span></button>
     <nav id="main-nav" aria-label="Navegación principal">
       {paths.map(item => <a href={item.href} aria-current={currentPath === item.href ? 'page' : undefined}>{item.label}</a>)}
