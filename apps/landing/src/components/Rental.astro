@@ -24,5 +24,4 @@ const tasks = [
     <div class="equipment-visual"><div class="equipment-photo">{item.image.startsWith('/') ? <img src={item.image} alt={`${item.name} ${item.model}`} width="800" height="2048" loading="lazy" decoding="async" /> : <Photo name={item.image as keyof typeof images} alt={`${item.name}`} />}</div><div class="equipment-reveal"><p>{item.model}</p><dl><div class="equipment-main-spec"><dt>{item.label}</dt><dd>{item.spec}</dd></div>{item.details.slice(1).map(([key,value]) => <div><dt>{key}</dt><dd>{value}</dd></div>)}</dl><a class="equipment-inquiry" href={`https://wa.me/524495411077?text=${encodeURIComponent(`Hola, me interesa rentar ${item.name} (${item.model}). ¿Me pueden compartir disponibilidad y cotización de este equipo?`)}`} target="_blank" rel="noopener noreferrer" aria-label={`Consultar por WhatsApp sobre ${item.name}, ${item.model}`}>Consultar por WhatsApp</a></div></div>
     <h3>{item.name}</h3>
   </article>)}</div>
-  <p class="catalog-note">Selección de {equipment.length} equipos con ficha disponible. Configuración y disponibilidad sujetas a consulta.</p>
 </section>

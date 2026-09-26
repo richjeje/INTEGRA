@@ -257,3 +257,46 @@
     .company-hero :is(.hero-actions, .company-tagline) { justify-content:center; }
   }
 }
+
+/* Content refinements: concise trust bands and a prominent freight benefit. */
+@layer responsive {
+  @media(max-width:760px) {
+    body[data-brand="rent"] .equipment-task-guide .task-grid button:last-child:nth-child(odd) {
+      grid-column:1 / -1;
+      text-align:center;
+      border-left:0;
+      border-top:1px solid var(--line);
+    }
+  }
+  .trust-band--integra .trust-band-layout { grid-template-columns:minmax(0,1fr) auto; }
+  .trust-band--rent .trust-band-layout { grid-template-columns:minmax(0,1fr) minmax(140px,180px) auto; }
+  .trust-band--rent dl { grid-template-columns:1fr; grid-column:auto; grid-row:auto; }
+  body[data-brand="rent"] .equipment-card h3 { text-align:center; }
+  .rent-promo { padding:54px 0; background:linear-gradient(110deg,#ffd12d,#ffdf62); border-block:1px solid #e5b700; }
+  .rent-promo .shell { grid-template-columns:minmax(0,1fr) auto; gap:36px; }
+  .rent-promo-message { display:flex; align-items:center; gap:28px; min-width:0; }
+  .rent-promo-icon { display:grid; place-items:center; flex:0 0 88px; width:88px; height:88px; border:1px solid #10243a28; border-radius:22px; background:#ffffff26; }
+  .rent-promo-icon svg { width:55px; height:55px; }
+  .rent-promo h2 { font-size:clamp(30px,3.3vw,48px); line-height:1.08; font-weight:700; letter-spacing:-.04em; }
+  .rent-promo p { margin-top:16px; font-size:14px; line-height:1.6; color:var(--navy); }
+  .rent-promo a { grid-column:auto; grid-row:auto; display:inline-flex; justify-content:center; align-items:center; gap:24px; min-height:56px; padding:16px 24px; border:0; border-radius:10px; background:var(--navy); color:white; font-size:14px; font-weight:700; box-shadow:0 8px 20px #10243a20; transition:background .2s,transform .2s; }
+  .rent-promo a:hover { background:#1e3c58; transform:translateY(-2px); }
+  .rent-promo a:focus-visible { outline-color:var(--navy); }
+  .rent-promo a span { font-size:22px; line-height:1; }
+  @media(max-width:900px) {
+    .trust-band--rent .trust-band-layout { grid-template-columns:minmax(0,1fr) auto; }
+    .trust-band--rent dl { grid-column:2; grid-row:1; }
+    .rent-promo .shell { grid-template-columns:1fr; gap:28px; }
+    .rent-promo a { justify-self:start; }
+  }
+  @media(max-width:700px) {
+    .trust-band--integra .trust-band-layout, .trust-band--rent .trust-band-layout { grid-template-columns:minmax(0,1fr); }
+    .trust-band--rent dl { grid-column:auto; grid-row:auto; }
+    .rent-promo { padding:40px 0; }
+    .rent-promo-message { flex-direction:column; gap:20px; text-align:center; }
+    .rent-promo-icon { flex-basis:64px; width:64px; height:64px; border-radius:16px; }
+    .rent-promo-icon svg { width:42px; height:42px; }
+    .rent-promo a { width:100%; max-width:360px; justify-self:center; }
+    .rent-promo p { max-width:310px; margin-inline:auto; }
+  }
+}

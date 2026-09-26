@@ -12,7 +12,7 @@ const content = {
   integra: {
     eyebrow: 'Ingeniería coordinada',
     title: 'Diseño, fabricación, programación e instalación en una sola ruta.',
-    stats: [['4', 'etapas de ejecución'], ['5', 'criterios de validación'], ['1', 'responsable de integración']],
+    stats: [],
     href: '#brief-integra',
     action: 'Platicar sobre mi proyecto',
   },
@@ -26,7 +26,7 @@ const content = {
   rent: {
     eyebrow: 'Selección con contexto',
     title: 'El equipo se confirma según el trabajo y las condiciones del sitio.',
-    stats: [['11', 'equipos con ficha'], ['5', 'tipos de trabajo'], ['1', 'revisión antes de reservar']],
+    stats: [['11', 'equipos con ficha']],
     href: '#brief-rent',
     action: 'Consultar disponibilidad',
   },
@@ -36,7 +36,7 @@ const current = content[brand];
 <section class:list={['trust-band', `trust-band--${brand}`]} aria-label="Datos de confianza">
   <div class="shell trust-band-layout">
     <div class="trust-band-copy"><p>{current.eyebrow}</p><h2>{current.title}</h2></div>
-    <dl>{current.stats.map(([value,label]) => <div><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
+    {current.stats.length > 0 && <dl>{current.stats.map(([value,label]) => <div><dt>{label}</dt><dd>{value}</dd></div>)}</dl>}
     <a href={current.href}>{current.action}<span aria-hidden="true">→</span></a>
   </div>
 </section>

@@ -3,7 +3,6 @@ import { processes } from '../data/catalog.js';
 import { materials, profiles } from '../data/met';
 import Photo from './Photo.astro';
 import images from '../data/images.json';
-const labels = { laser: 'Corte láser', doblado: 'Doblado', rolado: 'Rolado', soldadura: 'Soldadura' };
 const processResources = {
   laser: {
     label: 'Materiales para corte láser',
@@ -24,7 +23,7 @@ const processResources = {
 ---
 <section id="met" class="metal section" aria-labelledby="met-title">
   <div class="shell">
-    <div class="section-heading met-process-heading" data-reveal><div><p class="eyebrow">Integra Met / Procesos</p><h2 id="met-title">Del material<br />a la pieza terminada.</h2></div><p class="section-copy">Recorre nuestras capacidades de manufactura. Cada bloque muestra el equipo, su alcance documentado y los datos necesarios para revisar tu pieza.</p></div>
+    <div class="section-heading met-process-heading" data-reveal><div><h2 id="met-title">Del material<br />a la pieza terminada.</h2></div><p class="section-copy">Recorre nuestras capacidades de manufactura. Cada bloque muestra el equipo, su alcance documentado y los datos necesarios para revisar tu pieza.</p></div>
     <div class="process-zigzag">
       {Object.entries(processes).map(([id, process], index) => {
         const resources = processResources[id as keyof typeof processResources];
@@ -44,7 +43,7 @@ const processResources = {
             <figure><img src={item.image} alt={item.name} loading="lazy" decoding="async" /></figure>
             <div><strong>{item.name}</strong><span>{item.value}</span></div>
           </article>)}</div>
-          <small class="process-resources-foot">{process.foot}</small>
+          {process.foot && <small class="process-resources-foot">{process.foot}</small>}
         </div>}
       </article>;
       })}
