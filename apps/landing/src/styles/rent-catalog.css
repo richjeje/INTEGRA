@@ -1,0 +1,55 @@
+/* Catalog V1 additions. Scoped to Rent to preserve the other divisions. */
+@layer responsive {
+  .rental-service { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; border-bottom:1px solid var(--line); }
+  .rental-service h2 { max-width:540px; margin-block:16px 22px; font-size:clamp(30px,3.3vw,46px); }
+  .rental-service p { max-width:580px; color:var(--muted); font-size:14px; line-height:1.8; }
+  .rental-periods { display:flex; flex-wrap:wrap; gap:10px; margin:0 0 24px; padding:0; list-style:none; }
+  .rental-periods li { padding:12px 18px; border:1px solid var(--line); border-radius:8px; font-size:13px; font-weight:600; }
+  .rental-text-link { display:inline-flex; gap:14px; margin-top:22px; padding-bottom:6px; border-bottom:1px solid currentColor; font-size:13px; }
+  .rental-intro { margin-top:16px; color:var(--muted); font-size:15px; line-height:1.7; }
+  body[data-brand="rent"] .rental .equipment-task-guide { grid-template-columns:260px minmax(0,1fr); }
+  body[data-brand="rent"] .rental .task-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+  body[data-brand="rent"] .rental .task-grid button { min-height:128px; padding:25px 20px; border-top:1px solid var(--line); }
+  body[data-brand="rent"] .rental .task-grid button:nth-child(-n+3) { border-top:0; }
+  body[data-brand="rent"] .rental #equipment-count { margin-top:8px; color:var(--muted); font-size:12px; font-weight:400; letter-spacing:0; text-transform:none; }
+  body[data-brand="rent"] .rental .equipment-grid { display:flex; flex-wrap:wrap; justify-content:center; align-items:flex-start; gap:46px 28px; }
+  body[data-brand="rent"] .rental .equipment-card { flex:0 0 calc((100% - 56px) / 3); min-width:0; }
+  .equipment-identity { display:flex; height:100%; min-height:200px; flex-direction:column; align-items:center; justify-content:center; padding:20px; text-align:center; color:var(--navy); border:1px solid #10243a22; border-radius:10px; background:linear-gradient(145deg,#fff,#e3e8ec); }
+  .equipment-identity>span { font-size:15px; font-weight:600; }
+  .equipment-identity>strong { margin-block:20px 8px; font-size:clamp(38px,4vw,58px); line-height:1; }
+  .equipment-identity>small { max-width:200px; color:var(--muted); font-size:12px; line-height:1.5; }
+  body[data-brand="rent"] .rental .equipment-reveal { justify-content:flex-start; overflow-y:auto; background:var(--navy); }
+  .equipment-model { margin-top:9px; color:var(--muted); text-align:center; font-size:12px; }
+  .equipment-spec { display:block; margin-top:12px; color:var(--navy); text-align:center; font-size:12px; line-height:1.6; }
+  .equipment-spec strong { font-size:15px; }
+  .equipment-application { margin-top:16px; color:var(--muted); font-size:13px; line-height:1.8; }
+  .equipment-details { margin-top:18px; border-block:1px solid var(--line); }
+  .equipment-details summary { padding:15px 0; color:var(--navy); font-size:13px; font-weight:600; cursor:pointer; }
+  .equipment-details dl>div { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:16px; padding:10px 0; border-top:1px solid var(--line); font-size:12px; line-height:1.6; }
+  .equipment-details dt { color:var(--muted); }
+  .equipment-details dd { margin:0; text-align:right; overflow-wrap:anywhere; }
+  .equipment-details>p { padding:12px 0 18px; color:var(--muted); font-size:12px; line-height:1.8; }
+  .rent-promo .rent-logistics-note { grid-column:1/-1; max-width:850px; margin:0; font-size:12px; line-height:1.8; }
+  .rent-promo-message>div>p { max-width:680px; }
+  body:not(.enhanced)[data-brand="rent"] .equipment-visual { height:auto; }
+  body:not(.enhanced)[data-brand="rent"] .equipment-photo { height:260px; }
+  body:not(.enhanced)[data-brand="rent"] .equipment-reveal { position:relative; inset:auto; transform:none; pointer-events:auto; }
+  body:not(.enhanced)[data-brand="rent"] .equipment-reveal>p,
+  body:not(.enhanced)[data-brand="rent"] .equipment-reveal dl>div { opacity:1; transform:none; }
+  @media(max-width:1100px) {
+    body[data-brand="rent"] .rental .equipment-task-guide { grid-template-columns:1fr; }
+    body[data-brand="rent"] .rental .task-grid button:nth-child(-n+3) { border-top:1px solid var(--line); }
+    body[data-brand="rent"] .rental .equipment-card { flex-basis:calc((100% - 28px) / 2); }
+  }
+  @media(max-width:760px) {
+    .rental-service { grid-template-columns:minmax(0,1fr); gap:30px; }
+    body[data-brand="rent"] .rental .task-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    body[data-brand="rent"] .rental .task-grid button { min-height:136px; }
+    .rent-promo .rent-logistics-note { text-align:center; }
+  }
+  @media(max-width:600px) {
+    body[data-brand="rent"] .rental .equipment-card { flex-basis:100%; }
+    .rental-periods { gap:8px; }
+    .rental-periods li { padding:11px 14px; }
+  }
+}

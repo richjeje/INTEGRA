@@ -19,11 +19,11 @@ const contactTarget = brand === 'integra' ? '#brief-integra' : brand === 'met' ?
 ---
 <section class:list={['company-hero', `company-hero--${brand}`]} aria-labelledby="company-title">
   {brand !== 'rent' && (customImage ? <img src={customImage.src} width={customImage.width} height={customImage.height} alt={alt} class="company-hero-photo" loading="eager" fetchpriority="high" decoding="async" /> : <Photo name={image} alt={alt} class="company-hero-photo" eager sizes="100vw" />)}
-  {brand === 'rent' && <div class="company-hero-media"><picture><source media="(max-width: 1024px)" srcset="/equipos/hd/rent-03-broderson-grua.webp" /><Photo name={image} alt="Equipo de elevación y maniobra de Integra Rent" eager sizes="(max-width: 1024px) 100vw, 54vw" /></picture></div>}
+  {brand === 'rent' && <div class="company-hero-media"><picture><source media="(max-width: 1024px)" srcset="/equipos/hd/rent-03-broderson-grua.webp" /><Photo name={image} alt="Equipo de elevación y maniobra de Integra Rigging" eager sizes="(max-width: 1024px) 100vw, 54vw" /></picture></div>}
   <div class="company-hero-overlay" aria-hidden="true"></div>
   <div class="shell company-hero-copy">
     <p class="company-tagline"><span>{eyebrow}</span></p>
-    <h1 id="company-title">{headline}<br /><span>{highlight}</span></h1>
+    <h1 id="company-title">{headline}<br /><span>{brand === 'integra' ? <>a la <span class="company-hero-accent">operación.</span></> : highlight}</span></h1>
     <p class="company-hero-description">{description}</p>
     <div class="hero-actions">
       <a class="hero-primary" href={contactTarget} data-contact={contact}>Hablemos de tu proyecto</a>

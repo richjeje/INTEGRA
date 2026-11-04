@@ -1,11 +1,5 @@
 ---
-import logo from '../../public/brand/integra.svg?raw';
 import '../styles/laser-intro.css';
-// The source SVG places the small tagline below y=250. Keep only the main mark.
-const paths = (logo.match(/<path\b[^>]*\/>/g) ?? []).filter(path => {
-  const translation = path.match(/translate\(([-\d.]+)[, ]+([-\d.]+)\)/);
-  return translation && Number(translation[2]) < 250 && !path.includes('d=""');
-}).join('');
 ---
 <div class="laser-intro" id="laser-intro" data-intro-skip role="dialog" aria-modal="true" aria-label="Logo de Integra cortado con láser. Pulsa Escape o toca para omitir." tabindex="-1">
   <div class="laser-intro-scene">
@@ -23,7 +17,7 @@ const paths = (logo.match(/<path\b[^>]*\/>/g) ?? []).filter(path => {
       <rect x="62" y="70" width="876" height="452" rx="12" fill="#7d8992"/>
       <rect x="62" y="62" width="876" height="452" rx="12" fill="url(#plate-metal)" stroke="url(#plate-edge)" stroke-width="2"/>
       <g clip-path="url(#plate-clip)"><rect x="64" y="64" width="872" height="448" rx="10" fill="url(#metal-brush)" filter="url(#metal-grain)"/></g>
-      <g class="laser-artwork" transform="translate(154 160)" set:html={paths} />
+      <image href="/brand/integra-nuevo.png" x="100" y="170" width="800" height="267" preserveAspectRatio="xMidYMid meet" />
       <g class="laser-tool" opacity="0">
         <circle r="50" fill="url(#laser-halo)"/>
         <g class="laser-sparks">{Array.from({length:18}, (_,i) => <line x1="0" y1="0" x2="0" y2="0" stroke={i%3 ? '#ff9b38' : '#fff2bf'} stroke-width={i%3 ? '1.5' : '2.2'} stroke-linecap="round" />)}</g>

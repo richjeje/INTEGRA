@@ -20,7 +20,7 @@
   .company-hero{position:relative;isolation:isolate;height:90svh;min-height:min(700px,90svh);max-height:990px;display:flex;align-items:center;overflow:hidden;background:var(--navy);color:white}
   .company-hero-photo{position:absolute;z-index:-2;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%}
   .company-hero-overlay{position:absolute;z-index:-1;inset:0}
-  .company-hero--integra .company-hero-overlay{background:linear-gradient(90deg,#a91527b8 0%,#cf202e99 35%,#cf202e66 64%,#cf202e20 100%),linear-gradient(180deg,#99162670 0%,transparent 38%,#a1162760 100%)}
+  .company-hero--integra .company-hero-overlay{background:rgb(0 0 0 / 45%)}
   .company-hero--met .company-hero-overlay{background:rgb(0 0 0 / 45%)}
   .company-hero-copy{position:relative;padding-top:100px;padding-bottom:70px;animation:company-intro .6s both}
   .company-tagline{display:flex;align-items:center;gap:17px;margin-bottom:27px}
@@ -86,7 +86,7 @@
     .site-header--photo,.site-header--rent{height:76px}
     .company-hero{height:82svh;min-height:min(690px,82svh);max-height:860px;align-items:flex-start}
     .company-hero-photo{object-position:58% center}
-    .company-hero--integra .company-hero-overlay{background:linear-gradient(90deg,#a71527aa 0%,#c31f2d70 62%,#c31f2d30 100%),linear-gradient(180deg,#98162680 0%,transparent 30%,#a9152780 100%)}
+    .company-hero--integra .company-hero-overlay{background:rgb(0 0 0 / 45%)}
     .company-hero--met .company-hero-overlay{background:rgb(0 0 0 / 45%)}
     .company-hero-copy{padding-top:clamp(155px,22svh,190px);padding-bottom:135px}
     .company-tagline{align-items:flex-start;flex-direction:column;gap:11px;margin-bottom:21px}
@@ -123,3 +123,92 @@
   @media(max-width:359px){.company-hero--rent{min-height:min(820px,100svh)}.company-hero--rent .company-hero-copy{padding-top:132px;padding-bottom:330px}.division-card{grid-template-columns:.75fr 1fr;min-height:164px}.division-card h3{font-size:16px}.division-card-copy{padding:13px 11px}}
   @media(prefers-reduced-motion:reduce){.company-hero-copy{animation:none}}
 }
+
+/* Integra hero heading: heavy typography in brand red. */
+.company-hero--integra h1{
+  font-family:"Arial Black","Segoe UI Black","Bahnschrift",sans-serif;
+  font-weight:900;
+  font-stretch:normal;
+  font-size:clamp(48px,6.3vw,88px);
+  line-height:1.05;
+  letter-spacing:-.025em;
+}
+@media(max-width:600px){
+  .company-hero--integra h1{font-size:clamp(40px,10vw,58px)}
+}
+.company-hero--integra h1{color:#fff}.company-hero--integra h1 span{color:var(--red)} 
+/* Integra hero: right-aligned, dimensional headline and paired actions. */
+.company-hero--integra .company-hero-copy{
+  width:min(690px,48%);
+  max-width:690px;
+  margin-left:auto;
+  margin-right:clamp(32px,7vw,112px);
+  padding-top:125px;
+  padding-bottom:90px;
+}
+.company-hero--integra .company-tagline{justify-content:flex-end;text-align:right}
+.company-hero--integra h1{
+  max-width:none;
+  text-align:right;
+  font-family:"Arial Black","Segoe UI Black","Bahnschrift",sans-serif;
+  font-weight:900;
+  font-size:clamp(52px,6vw,88px);
+  line-height:1.02;
+  letter-spacing:-.025em;
+  text-shadow:0 1px 0 #ccc,0 2px 0 #bbb,0 3px 0 #aaa,0 4px 0 #999,0 5px 0 #888,0 8px 12px #0008;
+}
+.company-hero--integra h1{color:#fff}
+.company-hero--integra h1 span{color:var(--red);text-shadow:0 1px 0 #ae1723,0 2px 0 #9d1420,0 3px 0 #8c111c,0 4px 0 #790e18,0 5px 0 #650b14,0 8px 14px #0009}
+.company-hero--integra .company-hero-description{margin-left:auto;text-align:right}
+.company-hero--integra .hero-actions{justify-content:flex-end}
+@media(max-width:600px){
+  .company-hero--integra .company-hero-copy{width:calc(100% - 2 * var(--gutter));margin-inline:auto;padding:155px 0 110px}
+  .company-hero--integra .company-tagline{justify-content:flex-end;align-items:flex-end}
+  .company-hero--integra h1{font-size:clamp(43px,10.5vw,60px);text-align:right}
+  .company-hero--integra .company-hero-description{max-width:340px}
+  .company-hero--integra .hero-actions{justify-content:flex-end}
+}
+@media(prefers-reduced-motion:reduce){.company-hero--integra h1{text-shadow:0 2px 5px #0008}.company-hero--integra h1 span{text-shadow:0 2px 5px #0009}}
+/* Center the Integra hero content while preserving the dimensional title. */
+.company-hero--integra .company-hero-copy{margin-inline:auto}
+.company-hero--integra .company-tagline{justify-content:center;text-align:center}
+.company-hero--integra h1{text-align:center}
+.company-hero--integra .company-hero-description{margin-inline:auto;text-align:center}
+.company-hero--integra .hero-actions{justify-content:center}
+@media(max-width:600px){.company-hero--integra .company-tagline{align-items:center;justify-content:center}.company-hero--integra .company-hero-description{margin-inline:auto}}
+/* Left-aligned Integra hero; retain dimensional title and brand colors. */
+.company-hero--integra .company-hero-copy{margin-left:var(--gutter);margin-right:auto}
+.company-hero--integra .company-tagline{justify-content:flex-start;text-align:left}
+.company-hero--integra h1{text-align:left}
+.company-hero--integra .company-hero-description{margin-left:0;margin-right:auto;text-align:left}
+.company-hero--integra .hero-actions{justify-content:flex-start}
+@media(max-width:600px){.company-hero--integra .company-hero-copy{width:calc(100% - 2 * var(--gutter));margin-inline:auto}.company-hero--integra .company-tagline{align-items:flex-start;justify-content:flex-start}.company-hero--integra .company-hero-description{margin-left:0;margin-right:auto}}
+
+@font-face{font-family:'Nunito Hero';src:url('/fonts/nunito-variable.ttf') format('truetype');font-style:normal;font-weight:200 900;font-display:swap}
+/* Full-bleed photographic hero with the message anchored at the bottom. */
+.company-hero--integra{height:100svh;min-height:650px;max-height:none;align-items:flex-end}
+.company-hero--integra .company-hero-photo{object-position:center center}
+.company-hero--integra .company-hero-overlay{background:linear-gradient(180deg,rgba(0,0,0,.32) 0%,rgba(0,0,0,.06) 38%,rgba(0,0,0,.72) 100%)}
+.company-hero--integra .company-hero-copy{width:calc(100% - 2 * var(--gutter));max-width:1320px;margin-inline:auto;padding:150px 0 100px;text-align:left}
+.company-hero--integra .company-tagline{justify-content:flex-start;text-align:left;margin-bottom:16px}
+.company-hero--integra .company-tagline>span{color:#fff}
+.company-hero--integra h1{max-width:850px;margin:0;color:#fff;text-align:left;text-transform:uppercase;font-family:'Nunito Hero',sans-serif;font-size:clamp(45px,5.5vw,76px);font-weight:800;line-height:1.02;letter-spacing:-.035em;text-shadow:0 2px 12px #0008}
+.company-hero--integra h1 span{color:#fff;font-weight:700;text-shadow:none}
+.company-hero--integra h1 .company-hero-accent{color:var(--yellow)}
+.company-hero--integra .company-hero-description{max-width:500px;margin:18px 0 0;text-align:left;color:#fff}
+.company-hero--integra .hero-actions{justify-content:flex-start;gap:10px;margin-top:25px}
+.company-hero--integra .hero-primary,.company-hero--integra .hero-secondary{min-height:60px;padding:0 28px;border:0;border-radius:0;font-size:13px;font-weight:700;text-transform:uppercase;display:inline-flex;align-items:center;justify-content:center}
+.company-hero--integra .hero-primary{background:var(--red);color:white}
+.company-hero--integra .hero-primary:hover{background:#a91925}
+.company-hero--integra .hero-secondary{background:#181818d9;color:#fff}
+.company-hero--integra .hero-secondary:hover{background:#333;color:#fff}
+@media(max-width:760px){
+  .company-hero--integra{height:auto;min-height:100svh;align-items:flex-end}
+  .company-hero--integra .company-hero-photo{object-position:58% center}
+  .company-hero--integra .company-hero-overlay{background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.12) 30%,rgba(0,0,0,.86) 100%)}
+  .company-hero--integra .company-hero-copy{padding:150px 0 65px;text-align:left}
+  .company-hero--integra h1{font-size:clamp(36px,9.5vw,58px);margin:0;text-align:left;line-height:1.06}
+  .company-hero--integra .company-hero-description{margin:16px 0 0;text-align:left;line-height:1.55}
+  .company-hero--integra .company-tagline,.company-hero--integra .hero-actions{justify-content:flex-start}
+}
+@media(max-width:480px){.company-hero--integra .hero-actions{flex-direction:column;align-items:stretch;gap:10px;margin-top:22px}.company-hero--integra .hero-actions a{width:100%;max-width:340px;min-height:56px}}

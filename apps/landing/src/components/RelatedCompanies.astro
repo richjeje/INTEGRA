@@ -1,0 +1,40 @@
+---
+interface Props { brand: 'integra' | 'met' | 'rent'; }
+const { brand } = Astro.props;
+const companies = [
+  { id: 'integra', name: 'Integra', href: '/integra/', logo: '/brand/integra-nuevo.png' },
+  { id: 'met', name: 'Integra Steel', href: '/met/', logo: '/brand/integra-steel.png' },
+  { id: 'rent', name: 'Integra Rigging', href: '/rent/', logo: '/brand/integra-rigging.png' },
+] as const;
+const related = companies.filter(company => company.id !== brand);
+---
+<section class="related-companies" aria-labelledby="related-companies-title">
+  <div class="shell related-banner">
+    <div class="related-copy">
+      <p>Más soluciones para tu proyecto</p>
+      <h2 id="related-companies-title">Tu proyecto cuenta con más respaldo.</h2>
+      <p class="related-description">Descubre las otras soluciones de Integra.</p>
+    </div>
+    <div class="related-actions">
+      {related.map(company => <a href={company.href} aria-label={`Conocer ${company.name}`}><span class="button-text"><img src={company.logo} alt="" loading="lazy" /></span><span class="button-arrow" aria-hidden="true">↗</span></a>)}
+    </div>
+  </div>
+</section>
+<style>
+  .related-companies{background:#10243a;color:#fff;border-left:6px solid #cf202e}
+  .related-banner{display:flex;align-items:center;justify-content:space-between;gap:32px;padding-block:38px}
+  .related-copy>p:first-child{color:#ffd12d;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+  .related-copy{min-width:0;max-width:500px}
+  .related-copy h2{margin-top:9px;font-size:clamp(24px,2.4vw,34px);font-weight:700;line-height:1.12;letter-spacing:-.025em;color:#fff}
+  .related-copy .related-description{margin-top:10px;color:#d4dce4;font-size:14px;line-height:1.5}
+  .related-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;width:min(56%,640px);flex-shrink:0}
+  .related-actions a{display:flex;align-items:center;justify-content:space-between;gap:10px;min-width:0;min-height:116px;padding:10px 14px;background:#fff;border:1px solid #fff;border-radius:4px;color:#10243a;transition:background .2s,transform .2s}
+  .button-text{display:flex;flex:1;min-width:0;flex-direction:column;gap:4px;text-align:left}
+  .button-text img{display:block;width:100%;max-width:250px;height:80px;object-fit:contain;object-position:center}
+  .related-actions .button-arrow{display:grid;place-items:center;flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#cf202e;color:#fff;font-size:17px}
+  .related-actions a:hover{background:#f2f4f5;transform:translateY(-2px)}
+  .related-actions a:focus-visible{outline:3px solid #ffd12d;outline-offset:3px}
+  @media(max-width:900px){.related-banner{align-items:flex-start;flex-direction:column;gap:20px;padding-block:30px}.related-actions{width:100%;max-width:640px}}
+  @media(max-width:430px){.related-actions{grid-template-columns:1fr}.related-actions a{min-height:90px}.button-text img{height:64px}}
+  @media(prefers-reduced-motion:reduce){.related-actions a{transition:none}}
+</style>

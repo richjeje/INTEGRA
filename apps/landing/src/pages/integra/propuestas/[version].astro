@@ -1,0 +1,110 @@
+---
+import Header from '../../../components/Header.astro';
+import Photo from '../../../components/Photo.astro';
+import '../../../styles/global.css';
+import '../../../styles/companies.css';
+import '../../../styles/responsive.css';
+import '../../../styles/hero-proposals.css';
+export function getStaticPaths() {
+  return ['1', '2', '3'].map(version => ({ params: { version } }));
+}
+const { version } = Astro.params;
+const concepts = [
+  { id: '1', name: 'Presencia industrial', detail: 'Fotografía inmersiva · Mensaje directo' },
+  { id: '2', name: 'Ingeniería en foco', detail: 'Composición editorial · Claridad y espacio' },
+  { id: '3', name: 'Del plano a la planta', detail: 'Lenguaje técnico · Proceso y precisión' },
+];
+const current = concepts.find(item => item.id === version)!;
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Hero {version} — {current.name} | Integra</title>
+  </head>
+  <body data-brand="integra" class={`proposal proposal--${version}`}>
+    <aside class="proposal-picker" aria-label="Comparar propuestas de hero">
+      <a class="proposal-back" href="/integra/">← Landing actual</a>
+      <nav aria-label="Versiones de diseño">
+        {concepts.map(item => <a href={`/integra/propuestas/${item.id}/`} aria-current={version === item.id ? 'page' : undefined}><span>0{item.id}</span> {item.name}</a>)}
+      </nav>
+      <span class="proposal-label">EXPLORACIÓN DE DISEÑO</span>
+    </aside>
+    <div class="proposal-stage">
+      <Header brand="integra" />
+      <main id="contenido" tabindex="-1">
+        {version === '1' && <section class="concept hero-cinema" aria-labelledby="hero-title">
+          <Photo name="integra-transportador-cadena" alt="Transportador aéreo instalado en una planta industrial" class="cinema-photo" eager sizes="100vw" />
+          <div class="cinema-shade" aria-hidden="true"></div>
+          <div class="concept-wrap cinema-content">
+            <p class="concept-eyebrow"><span></span> Ingeniería e integración industrial</p>
+            <h1 id="hero-title">Tu siguiente<br />gran idea.<br /><em>En operación.</em></h1>
+            <p class="concept-description">Conectamos ingeniería, fabricación e integración para llevar tu proceso del concepto a la planta.</p>
+            <div class="concept-actions"><a class="concept-primary" href="/integra/#brief-integra">Hablemos de tu proyecto <span aria-hidden="true">↗</span></a><a class="concept-link" href="/integra/#integra">Explorar soluciones ↓</a></div>
+          </div>
+          <div class="cinema-bottom concept-wrap"><span>Aguascalientes, México</span><p>Transportadores <i>/</i> Automatización <i>/</i> Integración</p><span class="cinema-index">INGENIERÍA QUE CONECTA.</span></div>
+        </section>}
+        {version === '2' && <section class="concept hero-editorial" aria-labelledby="hero-title">
+          <div class="editorial-copy">
+            <p class="concept-eyebrow"><span></span> Ideas claras. Soluciones integradas.</p>
+            <h1 id="hero-title">Diseñamos<br />lo que mueve<br /><em>tu industria.</em></h1>
+            <p class="concept-description">De una necesidad en tu línea a una solución en marcha. Ingeniería, transportadores y automatización a la medida de tu proceso.</p>
+            <div class="concept-actions"><a class="concept-primary" href="/integra/#brief-integra">Cuéntanos tu proyecto <span aria-hidden="true">↗</span></a><a class="concept-link" href="/integra/#integra">Qué hacemos ↓</a></div>
+            <div class="editorial-note"><span>01 — 03</span><p>Entender el reto.<br /><strong>Integrar la solución.</strong></p></div>
+          </div>
+          <div class="editorial-media">
+            <div class="editorial-image"><Photo name="integra-transportador-aereo" alt="Estructura de un sistema de transporte aéreo industrial" eager sizes="(max-width: 800px) 100vw, 50vw" /></div>
+            <div class="editorial-caption"><span>SISTEMAS QUE CONECTAN</span><p>Diseño de ingeniería<br /><strong>Aplicado a tu operación.</strong></p><span aria-hidden="true">↗</span></div>
+            <span class="editorial-mark" aria-hidden="true">i.</span>
+          </div>
+        </section>}
+        {version === '3' && <section class="concept hero-technical" aria-labelledby="hero-title">
+          <div class="technical-grid" aria-hidden="true"></div>
+          <div class="technical-top concept-wrap"><span>INTEGRA / INGENIERÍA INDUSTRIAL</span><span>CONCEPTO → OPERACIÓN</span></div>
+          <div class="technical-layout concept-wrap">
+            <div class="technical-copy"><p class="concept-eyebrow"><span></span> Cada pieza tiene un propósito.</p><h1 id="hero-title">Todo conectado.<br /><em>Todo avanza.</em></h1><p class="concept-description">Diseñamos e integramos los sistemas que hacen funcionar tu proceso. Del primer plano a la puesta en marcha.</p><div class="concept-actions"><a class="concept-primary" href="/integra/#brief-integra">Iniciemos tu proyecto <span aria-hidden="true">↗</span></a><a class="concept-link" href="/integra/#integra">Ver capacidades ↓</a></div></div>
+            <div class="technical-visual"><span class="technical-ref">FIG. 01 / SISTEMA DE TRANSPORTE</span><div class="technical-frame"><Photo name="integra-transportador-power-free" alt="Sistema industrial de transporte Power & Free" eager sizes="(max-width: 800px) 100vw, 46vw" /><span class="frame-corner corner-one" aria-hidden="true"></span><span class="frame-corner corner-two" aria-hidden="true"></span></div><div class="technical-annotation"><span aria-hidden="true">+</span> Una solución. Cada etapa integrada.</div></div>
+          </div>
+          <ol class="technical-process concept-wrap"><li><span>01</span><div><strong>Diseñamos</strong><p>Entendemos tu proceso.</p></div></li><li><span>02</span><div><strong>Integramos</strong><p>Conectamos cada sistema.</p></div></li><li><span>03</span><div><strong>Ponemos en marcha</strong><p>Llevamos la solución a planta.</p></div></li></ol>
+        </section>}
+      </main>
+    </div>
+    <footer class="proposal-explanation"><p><span>PROPUESTA 0{version}</span><strong>{current.name}</strong></p><p>{current.detail}</p><a href="/integra/">Comparar con el hero actual ↗</a></footer>
+    <script>
+  document.body.classList.add('enhanced');
+  const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle')!;
+  const nav = document.querySelector<HTMLElement>('#main-nav')!;
+  const backdrop = document.querySelector<HTMLElement>('.menu-backdrop')!;
+  const main = document.querySelector<HTMLElement>('main')!;
+  function closeMenu() {
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Abrir menú');
+    nav.classList.remove('open');
+    document.body.classList.remove('menu-is-open');
+    main.inert = false;
+  }
+  toggle.addEventListener('click', () => {
+    if (toggle.getAttribute('aria-expanded') === 'true') return closeMenu();
+    toggle.setAttribute('aria-expanded', 'true');
+    toggle.setAttribute('aria-label', 'Cerrar menú');
+    nav.classList.add('open');
+    document.body.classList.add('menu-is-open');
+    main.inert = true;
+    nav.querySelector<HTMLAnchorElement>('a')?.focus();
+  });
+  backdrop.addEventListener('click', () => { closeMenu(); toggle.focus(); });
+  document.addEventListener('keydown', event => {
+    if (toggle.getAttribute('aria-expanded') !== 'true') return;
+    if (event.key === 'Escape') { closeMenu(); toggle.focus(); }
+    if (event.key !== 'Tab') return;
+    const last = Array.from(nav.querySelectorAll<HTMLAnchorElement>('a')).at(-1)!;
+    if (event.shiftKey && document.activeElement === toggle) { event.preventDefault(); last.focus(); }
+    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); toggle.focus(); }
+  });
+  matchMedia('(max-width: 1024px)').addEventListener('change', closeMenu);
+</script>
+  </body>
+</html>
+

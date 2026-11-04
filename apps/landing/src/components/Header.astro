@@ -4,8 +4,8 @@ interface Props { brand?: string; }
 const { brand = 'integra' } = Astro.props;
 const paths = [
   { href: '/integra/', label: 'Integra' },
-  { href: '/met/', label: 'Integra Met' },
-  { href: '/rent/', label: 'Integra Rent' },
+  { href: '/met/', label: 'Integra Steel' },
+  { href: '/rent/', label: 'Integra Rigging' },
 ];
 const currentPath = Astro.url.pathname.replace(/\/?$/, '/');
 const photo = ['integra', 'met'].includes(brand);

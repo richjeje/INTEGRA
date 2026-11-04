@@ -40,7 +40,8 @@ if (intro && document.documentElement.hasAttribute('data-laser-intro')) {
   watchdog.observe(root, { attributes:true, attributeFilter:['data-laser-intro'] });
   try {
     const paths = Array.from(intro.querySelectorAll<SVGPathElement>('.laser-artwork path')).filter(path => path.getTotalLength() > 0);
-    if (!paths.length) throw new Error('No logo contours available');
+    if (!paths.length) { background.forEach(el => { el.inert = true; }); skip.focus({ preventScroll:true }); exitTimer = setTimeout(() => finish(), 1800); }
+    else {
     // Cut the symbol first, then the wordmark left to right.
     paths.sort((a,b) => {
       const box = (path: SVGPathElement) => { const r=path.getBBox(); const m=path.transform.baseVal.consolidate()?.matrix; return { x:r.x+(m?.e ?? 0), y:r.y+(m?.f ?? 0) }; };
@@ -101,5 +102,6 @@ if (intro && document.documentElement.hasAttribute('data-laser-intro')) {
       }
     };
     frame=requestAnimationFrame(tick);
+    }
   } catch { finish(true); }
 }

@@ -60,12 +60,19 @@ with sync_playwright() as p:
             assert url.path in documents, ('route',href)
             assert not url.fragment or unquote(url.fragment) in documents[url.path], ('anchor',href)
     page.goto(BASE+'/rent/')
-    for category,count in [('altura',2),('carga',2),('energia',5),('herramientas',1),('obra',1),('todos',11)]:
+    for category,count in [('altura',3),('carga',3),('energia',5),('herramientas',1),('obra',1),('transporte',1),('todos',14)]:
         page.locator(f'[data-filter="{category}"]').click()
         assert page.locator('.equipment-card:visible').count() == count, category
         assert page.locator(f'[data-filter="{category}"]').get_attribute('aria-pressed') == 'true'
     page.locator('.equipment-card').first.focus()
     assert 'Zoomlion' in unquote(page.locator('.equipment-inquiry').first.get_attribute('href'))
+    for card in page.locator('.equipment-card').all():
+        card.locator('summary').click()
+        assert card.locator('details').get_attribute('open') is not None
+        message = unquote(card.locator('.equipment-inquiry').get_attribute('href'))
+        assert card.locator('h3').inner_text() in message and 'Fechas:' in message
+        required = ['Origen:', 'Destino:', 'Peso y dimensiones:'] if card.get_attribute('data-category') == 'transporte' else ['Ubicación:', 'Duración']
+        assert all(field in message for field in required)
     page.goto(BASE+'/integra/')
     tabs=page.locator('[data-journey-step]')
     tabs.first.focus()
@@ -94,7 +101,8 @@ with sync_playwright() as p:
         assert nojs.locator('#main-nav').is_visible()
         assert nojs.evaluate('document.documentElement.scrollWidth<=innerWidth'), ('nojs',route)
         assert nojs.locator('#whatsapp').get_attribute('href').startswith('https://wa.me/524495411077')
-    assert nojs.locator('.equipment-card').count()==11
+    assert nojs.locator('.equipment-card').count()==14
+    assert nojs.locator('.equipment-inquiry:visible').count()==14
     assert not errors, errors
     assert not failures, failures
     browser.close()

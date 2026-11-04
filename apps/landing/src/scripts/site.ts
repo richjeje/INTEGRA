@@ -1,4 +1,4 @@
-﻿export {};
+export {};
 const all = <T extends Element = HTMLElement>(selector: string) => Array.from(document.querySelectorAll<T>(selector));
 document.body.classList.add('enhanced');
 
@@ -47,7 +47,7 @@ function setContact(context: string, announce = false) {
 }
 all<HTMLAnchorElement>('#main-nav a, .unit-index a').forEach(link => link.addEventListener('click', () => {
   closeMenu();
-  const context: Record<string, string> = { '#integra': 'un proyecto de ingeniería con Integra', '#met': 'los servicios de Integra Met', '#rent': 'los equipos de Integra Rent' };
+  const context: Record<string, string> = { '#integra': 'un proyecto de ingeniería con Integra', '#met': 'los servicios de Integra Steel', '#rent': 'los equipos de Integra Rigging' };
   setContact(context[link.hash] || 'un proyecto con Integra');
 }));
 all<HTMLElement>('[data-contact]').forEach(control => control.addEventListener('click', () => {

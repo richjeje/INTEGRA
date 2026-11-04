@@ -1,11 +1,12 @@
 ---
+import { equipment } from '../data/rent';
 interface Props { brand?: 'home' | 'integra' | 'met' | 'rent'; }
 const { brand = 'home' } = Astro.props;
 const content = {
   home: {
     eyebrow: 'Capacidad conectada',
     title: 'Un mismo grupo para avanzar de la idea al trabajo en campo.',
-    stats: [['3', 'divisiones especializadas'], ['11', 'equipos documentados'], ['5', 'materiales con capacidad registrada']],
+    stats: [['3', 'divisiones especializadas'], [String(equipment.length), 'opciones de equipo y traslado'], ['5', 'materiales con capacidad registrada']],
     href: '/integra/',
     action: 'Conocer nuestras capacidades',
   },
@@ -26,7 +27,7 @@ const content = {
   rent: {
     eyebrow: 'Selección con contexto',
     title: 'El equipo se confirma según el trabajo y las condiciones del sitio.',
-    stats: [['11', 'equipos con ficha']],
+    stats: [[String(equipment.length), 'opciones de equipo y traslado']],
     href: '#brief-rent',
     action: 'Consultar disponibilidad',
   },

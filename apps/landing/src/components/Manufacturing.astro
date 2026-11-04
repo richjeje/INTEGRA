@@ -35,7 +35,7 @@ const processResources = {
           <dl class="process-capacities">{process.stats.map(([value, label]) => <div><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
           <p class="process-condition">{process.note}</p>
           {!resources && <div class="process-spec-sheet"><p>Especificaciones documentadas</p><dl>{process.details.map(([key, value]) => <div><dt>{key}</dt><dd>{value}</dd></div>)}</dl><small>{process.foot}</small></div>}
-          <a class="process-inquiry" href={`https://wa.me/524495411077?text=${encodeURIComponent(`Hola, me interesa el proceso de ${process.title} de Integra Met. ¿Me pueden compartir información y ayudar con una cotización para mi proyecto?`)}`} target="_blank" rel="noopener noreferrer" aria-label={`Consultar ${process.title} por WhatsApp`}>Consultar proceso por WhatsApp</a>
+          <a class="process-inquiry" href={`https://wa.me/524495411077?text=${encodeURIComponent(`Hola, me interesa el proceso de ${process.title} de Integra Steel. ¿Me pueden compartir información y ayudar con una cotización para mi proyecto?`)}`} target="_blank" rel="noopener noreferrer" aria-label={`Consultar ${process.title} por WhatsApp`}>Consultar proceso por WhatsApp</a>
         </div>
         {resources && <div class="process-resources">
           <div class="process-resources-heading"><h4>{resources.label}</h4><span>{resources.description}</span></div>

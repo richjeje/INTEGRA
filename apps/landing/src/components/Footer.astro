@@ -5,8 +5,8 @@ const { brand = 'home' } = Astro.props;
 const messages = {
   home: 'Hola, quiero conversar sobre un proyecto con Integra.',
   integra: 'Hola, me interesa un proyecto de ingeniería e integración con Integra.',
-  met: 'Hola, me interesa consultar servicios y capacidades de Integra Met.',
-  rent: 'Hola, me interesa consultar la renta de equipo de Integra Rent.',
+  met: 'Hola, me interesa consultar servicios y capacidades de Integra Steel.',
+  rent: 'Hola, me interesa consultar la renta de equipo de Integra Rigging.',
 };
 const content = {
   home: {
@@ -28,10 +28,10 @@ const content = {
     links: [['#proceso-laser','Corte láser'],['#proceso-doblado','Doblado CNC'],['#proceso-rolado','Rolado'],['#brief-met','Solicitar cotización']],
   },
   rent: {
-    label: 'Equipo para instalación',
+    label: 'Renta y transporte especializado',
     title: 'El equipo correcto para avanzar con seguridad.',
-    description: 'Opciones de elevación, carga, energía y herramientas sujetas a capacidad, configuración y disponibilidad.',
-    links: [['#rent','Elegir equipo'],['#preguntas','Antes de reservar'],['#brief-rent','Preparar renta']],
+    description: 'Renta por día, semana, mes o proyecto. Elevación, maniobras, equipo ligero y transporte especializado desde Aguascalientes.',
+    links: [['#rent','Elegir equipo'],['#logistica','Transporte especializado'],['#preguntas','Antes de reservar'],['#brief-rent','Cotizar renta']],
   },
 };
 const current = content[brand];
@@ -48,7 +48,7 @@ const brandUnit = brand === 'met' ? 'met' : brand === 'rent' ? 'rent' : '';
     <div class="footer-grid">
       <div class="footer-brand"><a href="/" aria-label="Volver al inicio"><Brand unit={brandUnit} inverse={brand === 'met'} /></a><p>{current.description}</p><span>Control total en movimiento</span></div>
       <nav class="footer-column" aria-label="Navegación de esta página"><h3>Explorar</h3>{current.links.map(([href,label]) => <a href={href}>{label}</a>)}</nav>
-      <nav class="footer-column" aria-label="Nuestras empresas"><h3>Empresas</h3><a href="/integra/">Integra</a><a href="/met/">Integra Met</a><a href="/rent/">Integra Rent</a></nav>
+      <nav class="footer-column" aria-label="Nuestras empresas"><h3>Empresas</h3><a href="/integra/">Integra</a><a href="/met/">Integra Steel</a><a href="/rent/">Integra Rigging</a></nav>
       <div class="footer-column footer-contact"><h3>Contacto</h3><a href="tel:+524495411077">+52 449 541 1077</a><a href={whatsapp} target="_blank" rel="noopener noreferrer">WhatsApp</a><p>Aguascalientes, México</p><small>Atención a proyectos industriales</small></div>
     </div>
     <div class="footer-bottom"><span>© {new Date().getFullYear()} Integra. Todos los derechos reservados.</span><span>Ingeniería · Manufactura · Equipo</span></div>

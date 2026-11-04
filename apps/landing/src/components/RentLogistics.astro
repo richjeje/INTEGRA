@@ -1,0 +1,14 @@
+---
+import { equipment, rentalInquiry } from '../data/rent';
+const transport = equipment.find(item => item.id === 'cama-baja')!;
+---
+<section id="logistica" class="rent-promo" aria-labelledby="rent-logistics-title">
+  <div class="shell">
+    <div class="rent-promo-message">
+      <span class="rent-promo-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h24v24H5zM29 21h8l7 9v6H29M30 23v7h12M5 20h13M2 26h12"/><circle cx="13" cy="36" r="4" fill="var(--yellow)"/><circle cx="36" cy="36" r="4" fill="var(--yellow)"/></svg></span>
+      <div><h2 id="rent-logistics-title">Tu equipo, hasta<br /><span>el lugar de trabajo.</span></h2><p>Entrega y recolección con cama baja propia. Traslado de plataformas, montacargas y maquinaria, con atención desde Aguascalientes y cobertura regional.</p></div>
+    </div>
+    <a href={rentalInquiry(transport)} target="_blank" rel="noopener noreferrer">Cotizar traslado <span aria-hidden="true">→</span></a>
+    <p class="rent-logistics-note">Comparte peso, dimensiones, origen, destino y fechas para revisar ruta, accesos y costo del traslado.</p>
+  </div>
+</section>

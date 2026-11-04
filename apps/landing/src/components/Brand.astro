@@ -1,10 +1,14 @@
 ---
 interface Props { unit?: string; inverse?: boolean; }
-const { unit = '', inverse = false } = Astro.props;
-const key = unit === 'met' ? 'integra-met' : unit === 'rent' ? 'integra-rent' : 'integra';
-const assetKey = inverse ? `${key}-white` : key;
-const label = unit === 'met' ? 'Integra Met' : unit === 'rent' ? 'Integra Rent' : 'Integra';
+const { unit = '' } = Astro.props;
+const key = unit === 'met' ? 'integra-steel' : unit === 'rent' ? 'integra-rigging' : 'integra-nuevo';
+const label = unit === 'met' ? 'Integra Steel' : unit === 'rent' ? 'Integra Rigging' : 'Integra';
 ---
 <span class:list={['brand', `brand--${key}`]}>
-  <img class="brand-logo" src={`/brand/${assetKey}.svg`} alt={label} width={key === 'integra' ? 693 : key === 'integra-met' ? 409 : 410} height={key === 'integra' ? 302 : 207} />
+  <img class="brand-logo" src={`/brand/${key}.png`} alt={label} width="2172" height="724" />
 </span>
+<style>
+  .brand-logo{width:auto;height:55px;max-width:190px;object-fit:contain}
+  :global(.site-header--photo) .brand-logo,:global(.site-footer) .brand-logo,:global(.menu-heading) .brand-logo{filter:drop-shadow(0 0 3px #fff) drop-shadow(0 0 3px #fff)}
+  @media(max-width:600px){.brand-logo{height:46px;max-width:155px}}
+</style>
