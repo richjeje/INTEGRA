@@ -53,3 +53,55 @@
     .rental-periods li { padding:11px 14px; }
   }
 }
+
+/* Catalog images enlarge on hover; specifications remain visible below. */
+body[data-brand="rent"] .rental .equipment-visual { transform: none; }
+body[data-brand="rent"] .rental .equipment-card:hover .equipment-visual,
+body[data-brand="rent"] .rental .equipment-card:focus-within .equipment-visual { transform: none; }
+body[data-brand="rent"] .rental .equipment-card:hover h3,
+body[data-brand="rent"] .rental .equipment-card:focus-within h3 { transform: none; color: inherit; }
+body[data-brand="rent"] .rental .equipment-photo img { filter: none; }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  body[data-brand="rent"] .rental .equipment-photo:hover img { transform: scale(1.12); filter: none; }
+  body[data-brand="rent"] .rental .equipment-card:hover .equipment-photo:not(:hover) img { transform: none; filter: none; }
+}
+body[data-brand="rent"] .rental .equipment-details { border-bottom: 0; }
+body[data-brand="rent"] .rental .equipment-details>p { padding-bottom: 0; }
+body[data-brand="rent"] .rental .equipment-inquiry:focus-visible { outline-color: var(--navy); }
+
+/* Keep catalog actions aligned across cards in each row. */
+body[data-brand="rent"] .rental .equipment-grid { align-items: stretch; }
+body[data-brand="rent"] .rental .equipment-card { display: flex; flex-direction: column; }
+body[data-brand="rent"] .rental .equipment-visual { flex: 0 0 310px; }
+body[data-brand="rent"] .rental .equipment-card h3 { min-height: 54px; display: flex; align-items: center; justify-content: center; }
+body[data-brand="rent"] .rental .equipment-model { min-height: 18px; }
+body[data-brand="rent"] .rental .equipment-spec { min-height: 39px; }
+body[data-brand="rent"] .rental .equipment-application { min-height: 71px; }
+body[data-brand="rent"] .rental .equipment-inquiry { margin-top: auto; }
+body[data-brand="rent"] .rental .equipment-details { margin-bottom: 18px; }
+@media (max-width: 600px) {
+  body[data-brand="rent"] .rental .equipment-card h3,
+  body[data-brand="rent"] .rental .equipment-model,
+  body[data-brand="rent"] .rental .equipment-spec,
+  body[data-brand="rent"] .rental .equipment-application { min-height: 0; }
+  body[data-brand="rent"] .rental .equipment-inquiry { margin-top: 0; }
+}
+
+/* Inquiry action appears over the bottom of the equipment image. */
+body[data-brand="rent"] .rental .equipment-inquiry { position: absolute; z-index: 2; left: 16px; right: 16px; bottom: 16px; min-height: 46px; margin: 0; background: #10243a; border-color: #10243a; color: #fff; opacity: 0; transform: translateY(14px); pointer-events: none; box-shadow: 0 10px 24px #10243a55; transition: opacity .4s ease, transform .45s cubic-bezier(.22,1,.36,1), background .2s; }
+body[data-brand="rent"] .rental .equipment-visual:hover .equipment-inquiry,
+body[data-brand="rent"] .rental .equipment-visual:focus-within .equipment-inquiry { opacity: 1; transform: none; pointer-events: auto; }
+body[data-brand="rent"] .rental .equipment-inquiry:hover { background: #244762; border-color: #244762; }
+body[data-brand="rent"] .rental .equipment-inquiry:focus-visible { outline: 3px solid #ffcf27; outline-offset: 2px; }
+@media (hover: none) { body[data-brand="rent"] .rental .equipment-inquiry { opacity: 1; transform: none; pointer-events: auto; } }
+@media (prefers-reduced-motion: reduce) { body[data-brand="rent"] .rental .equipment-inquiry { transition: none; } }
+
+/* Compact equipment selector on phones. */
+@media (max-width: 600px) {
+  body[data-brand="rent"] .rental .equipment-task-intro { min-height: 0; padding: 18px 20px; }
+  body[data-brand="rent"] .rental .equipment-task-intro strong { font-size: 18px; }
+  body[data-brand="rent"] .rental .equipment-task-guide .task-grid button { min-height: 82px; padding: 14px 16px; }
+  body[data-brand="rent"] .rental .equipment-task-guide .task-grid strong { font-size: 13px; }
+  body[data-brand="rent"] .rental .equipment-task-guide .task-grid small { margin-top: 5px; font-size: 11px; }
+  body[data-brand="rent"] .rental .equipment-task-guide .task-grid button[aria-pressed="true"]::after { top: 8px; right: 8px; width: 19px; height: 19px; font-size: 10px; }
+}

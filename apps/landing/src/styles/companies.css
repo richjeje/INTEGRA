@@ -197,7 +197,7 @@
 .company-hero--integra h1 .company-hero-accent{color:var(--yellow)}
 .company-hero--integra .company-hero-description{max-width:500px;margin:18px 0 0;text-align:left;color:#fff}
 .company-hero--integra .hero-actions{justify-content:flex-start;gap:10px;margin-top:25px}
-.company-hero--integra .hero-primary,.company-hero--integra .hero-secondary{min-height:60px;padding:0 28px;border:0;border-radius:0;font-size:13px;font-weight:700;text-transform:uppercase;display:inline-flex;align-items:center;justify-content:center}
+.company-hero--integra .hero-primary,.company-hero--integra .hero-secondary{min-height:60px;padding:0 28px;border:0;border-radius:12px;font-size:13px;font-weight:700;text-transform:uppercase;display:inline-flex;align-items:center;justify-content:center}
 .company-hero--integra .hero-primary{background:var(--red);color:white}
 .company-hero--integra .hero-primary:hover{background:#a91925}
 .company-hero--integra .hero-secondary{background:#181818d9;color:#fff}
@@ -212,3 +212,7 @@
   .company-hero--integra .company-tagline,.company-hero--integra .hero-actions{justify-content:flex-start}
 }
 @media(max-width:480px){.company-hero--integra .hero-actions{flex-direction:column;align-items:stretch;gap:10px;margin-top:22px}.company-hero--integra .hero-actions a{width:100%;max-width:340px;min-height:56px}}
+
+/* Rounded calls to action for the Rigging hero. */
+.company-hero--rent .hero-actions :is(.hero-primary, .hero-secondary) { border-radius: 12px; }
+.company-hero--rent .hero-secondary { display: inline-flex; align-items: center; justify-content: center; min-height: 49px; padding: 0 23px; border: 1px solid currentColor; }

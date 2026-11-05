@@ -4,19 +4,15 @@ import CompanyHero from '../../components/CompanyHero.astro';
 import Rental from '../../components/Rental.astro';
 import Footer from '../../components/Footer.astro';
 import RentExpansion from '../../components/RentExpansion.astro';
-import TrustBand from '../../components/TrustBand.astro';
-import RentDetails from '../../components/RentDetails.astro';
 import RentLogistics from '../../components/RentLogistics.astro';
 import RelatedCompanies from '../../components/RelatedCompanies.astro';
 import '../../styles/rent-catalog.css';
 ---
 <Layout brand="rent" title="Integra Rigging | Renta de equipos y transporte en Aguascalientes" description="Renta de equipo ligero y pesado en Aguascalientes: plataformas, montacargas, grúa, soldadoras y transporte especializado. Por día, semana, mes o proyecto.">
   <CompanyHero brand="rent" image="rent-02-genie-articulada" alt="Plataforma articulada de elevación, imagen de catálogo ilustrativa" eyebrow="Elevación, maniobras y transporte" headline="El equipo correcto." highlight="Listo para tu proyecto." description="Renta de equipo ligero y pesado para la industria y la construcción. Elevación, manejo de carga y transporte especializado desde Aguascalientes." contact="la renta de equipo de Integra Rigging" target="#rent" secondary="Ver catálogo de equipos" />
-  <RentDetails />
+  <RentLogistics />
   <Rental />
   <RelatedCompanies brand="rent" />
-  <RentLogistics />
-  <TrustBand brand="rent" />
   <RentExpansion stage="after" />
   <Footer brand="rent" />
 </Layout>

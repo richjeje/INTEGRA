@@ -2,13 +2,41 @@
 import { equipment, rentalInquiry } from '../data/rent';
 const transport = equipment.find(item => item.id === 'cama-baja')!;
 ---
-<section id="logistica" class="rent-promo" aria-labelledby="rent-logistics-title">
-  <div class="shell">
-    <div class="rent-promo-message">
-      <span class="rent-promo-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h24v24H5zM29 21h8l7 9v6H29M30 23v7h12M5 20h13M2 26h12"/><circle cx="13" cy="36" r="4" fill="var(--yellow)"/><circle cx="36" cy="36" r="4" fill="var(--yellow)"/></svg></span>
-      <div><h2 id="rent-logistics-title">Tu equipo, hasta<br /><span>el lugar de trabajo.</span></h2><p>Entrega y recolección con cama baja propia. Traslado de plataformas, montacargas y maquinaria, con atención desde Aguascalientes y cobertura regional.</p></div>
+<section id="logistica" class="logistics-story" aria-labelledby="rent-logistics-title">
+  <div class="shell logistics-layout">
+    <div class="logistics-copy">
+      <p class="logistics-eyebrow"><span aria-hidden="true"></span> Transporte y maniobras</p>
+      <h2 id="rent-logistics-title">Tu equipo, hasta <span>el lugar de trabajo.</span></h2>
+      <p class="logistics-description">Entrega y recolección con cama baja propia. Trasladamos plataformas, montacargas y maquinaria desde Aguascalientes, con cobertura regional.</p>
+      <a class="logistics-cta" href={rentalInquiry(transport)} target="_blank" rel="noopener noreferrer">Consulta disponibilidad</a>
+      <p class="logistics-note">Comparte peso, dimensiones, origen, destino y fechas para revisar ruta, accesos y costo.</p>
     </div>
-    <a href={rentalInquiry(transport)} target="_blank" rel="noopener noreferrer">Cotizar traslado <span aria-hidden="true">→</span></a>
-    <p class="rent-logistics-note">Comparte peso, dimensiones, origen, destino y fechas para revisar ruta, accesos y costo del traslado.</p>
+    <div class="logistics-photos" aria-label="Equipo y maniobras en acción">
+      <figure class="logistics-photo logistics-photo--main"><img src="/proyectos/wa0005.webp" alt="Traslado de plataformas en camión" width="1672" height="940" loading="lazy" decoding="async" /><figcaption><span>01</span> Traslado de equipo</figcaption></figure>
+      <figure class="logistics-photo"><img src="/proyectos/wa0040.webp" alt="Maniobra con grúa para mover un tanque" width="1448" height="1086" loading="lazy" decoding="async" /><figcaption><span>02</span> Maniobras de carga</figcaption></figure>
+      <figure class="logistics-photo"><img src="/proyectos/wa0119.webp" alt="Equipo realizando una maniobra con grúa en una planta industrial" width="1870" height="841" loading="lazy" decoding="async" /><figcaption><span>03</span> Trabajo en planta</figcaption></figure>
+    </div>
   </div>
 </section>
+<style>
+  .logistics-story { padding: clamp(64px, 7vw, 108px) 0; background: #ffd639; color: #10243a; }
+  .logistics-layout { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); align-items: center; gap: clamp(40px, 6vw, 100px); }
+  .logistics-copy { max-width: 530px; }
+  .logistics-eyebrow { display: flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+  .logistics-eyebrow span { width: 28px; height: 2px; background: #ca2530; }
+  .logistics-copy h2 { margin: 22px 0 0; font-size: clamp(38px, 4.2vw, 62px); line-height: 1.04; letter-spacing: -.045em; font-weight: 700; }
+  .logistics-copy h2 span { display: block; }
+  .logistics-description { margin-top: 24px; max-width: 480px; font-size: 16px; line-height: 1.7; }
+  .logistics-cta { display: flex; width: fit-content; align-items: center; justify-content: center; min-width: 210px; min-height: 64px; margin: 30px 0 0; padding: 20px 36px; border-radius: 9px; background: #10243a; color: #fff; font-size: 16px; font-weight: 700; box-shadow: 0 10px 22px #10243a40; transition: transform .2s, background .2s; }
+  .logistics-cta:hover { background: #1e3c58; transform: translateY(-2px); }
+  .logistics-note { max-width: 400px; margin-top: 22px; padding-left: 14px; border-left: 2px solid #10243a66; font-size: 12px; line-height: 1.7; }
+  .logistics-photos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .logistics-photo { position: relative; min-width: 0; height: 190px; overflow: hidden; border-radius: 10px; background: #10243a; }
+  .logistics-photo--main { grid-column: 1 / -1; height: clamp(260px, 25vw, 360px); }
+  .logistics-photo::after { content: ''; position: absolute; inset: 35% 0 0; background: linear-gradient(transparent, #071522c9); pointer-events: none; }
+  .logistics-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .logistics-photo figcaption { position: absolute; z-index: 1; right: 15px; bottom: 15px; left: 15px; color: white; font-size: 13px; font-weight: 700; }
+  .logistics-photo figcaption span { margin-right: 8px; color: #ffda43; font-size: 10px; letter-spacing: .08em; }
+  @media (max-width: 900px) { .logistics-layout { grid-template-columns: 1fr; gap: 38px; } .logistics-copy { max-width: 680px; } }
+  @media (max-width: 600px) { .logistics-copy { text-align: center; } .logistics-eyebrow { justify-content: center; } .logistics-description { margin-inline: auto; } .logistics-cta { margin-inline: auto; } .logistics-story { padding: 56px 0; } .logistics-copy h2 { font-size: clamp(36px, 10vw, 48px); } .logistics-description { font-size: 15px; } .logistics-photos { gap: 8px; } .logistics-photo { height: 145px; } .logistics-photo--main { height: 240px; } .logistics-photo figcaption { right: 10px; bottom: 10px; left: 10px; font-size: 11px; } }
+</style>

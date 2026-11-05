@@ -13,17 +13,17 @@ import images from '../data/images.json';
     <div><strong data-equipment-selection>Todos los equipos</strong><span id="equipment-count" role="status" aria-live="polite" aria-atomic="true">{equipment.length} equipos</span></div>
     <button type="button" class="equipment-reset" data-filter="todos" data-filter-label="Todos los equipos" aria-pressed="true">Ver todo el equipo</button>
   </div>
-  <div class="equipment-grid">{equipment.map(item => <article class="equipment-card" tabindex="0" data-category={item.category} data-equipment-id={item.id} aria-labelledby={`equipment-${item.id}`}>
+  <div class="equipment-grid">{equipment.map(item => <article class="equipment-card" data-category={item.category} data-equipment-id={item.id} aria-labelledby={`equipment-${item.id}`}>
     <div class="equipment-visual">
       <div class="equipment-photo">
         {item.image ? (item.image.startsWith('/') ? <img src={item.image} alt={`${item.name} ${item.model}`} width="800" height="2048" loading="lazy" decoding="async" /> : <Photo name={item.image as keyof typeof images} alt={`${item.name} ${item.model}`} />) : <div class="equipment-identity" aria-hidden="true"><span>{item.model}</span><strong>{item.spec}</strong><small>{item.label}</small></div>}
       </div>
-      <div class="equipment-reveal"><p>{item.model}</p><dl><div class="equipment-main-spec"><dt>{item.label}</dt><dd>{item.spec}</dd></div>{item.details.slice(0,3).map(([key,value]) => <div><dt>{key}</dt><dd>{value}</dd></div>)}</dl><a class="equipment-inquiry" href={rentalInquiry(item)} target="_blank" rel="noopener noreferrer" aria-label={`Consultar por WhatsApp sobre ${item.name}, ${item.model}`}>{item.category === 'transporte' ? 'Cotizar traslado' : 'Consultar por WhatsApp'}</a></div>
+      <a class="equipment-inquiry" href={rentalInquiry(item)} target="_blank" rel="noopener noreferrer" aria-label={`Consultar por WhatsApp sobre ${item.name}, ${item.model}`}>{item.category === 'transporte' ? 'Cotizar traslado' : 'Consultar por WhatsApp'}</a>
     </div>
     <h3 id={`equipment-${item.id}`}>{item.name}</h3>
     <p class="equipment-model">{item.model}</p>
     <p class="equipment-spec"><strong>{item.spec}</strong> · {item.label}</p>
     <p class="equipment-application">{item.applications}</p>
-    <details class="equipment-details"><summary>Ver ficha técnica</summary><dl>{item.details.map(([key,value]) => <div><dt>{key}</dt><dd>{value}</dd></div>)}</dl><p>{item.note}</p></details>
+    <div class="equipment-details"><dl>{item.details.map(([key,value]) => <div><dt>{key}</dt><dd>{value}</dd></div>)}</dl><p>{item.note}</p></div>
   </article>)}</div>
 </section>
