@@ -1,5 +1,5 @@
 // Set the confirmed company number in international format, digits only.
-const WHATSAPP_NUMBER = '524495411077';
+const WHATSAPP_NUMBER = '524491060307';
 const units = {
   integra: { name: 'Integra', label: 'Ingeniería e integración', headline: 'De la necesidad a la puesta en marcha.', intro: 'Diseñamos, fabricamos e integramos soluciones para tus procesos de manufactura.', visual: 'PROYECTO INDUSTRIAL EN OPERACIÓN', need: 'Quiero automatizar un proceso', services: [
     ['transportadores', 'Transportadores industriales', 'Sistemas para mover materiales dentro de tu operación.'],

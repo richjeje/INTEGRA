@@ -51,5 +51,5 @@ export function rentalInquiry(item?: RentalEquipment) {
     ? ['Carga a trasladar: ', 'Peso y dimensiones: ', 'Origen: ', 'Destino: ', 'Fechas: ']
     : ['Trabajo a realizar: ', 'Ubicación: ', 'Fechas: ', 'Duración (día, semana, mes o proyecto): ', 'Capacidad o altura requerida: '];
   const message = [request, '', ...fields, '', '¿Me comparten disponibilidad y condiciones de entrega y recolección?'].join('\n');
-  return `https://wa.me/524495411077?text=${encodeURIComponent(message)}`;
+  return `https://wa.me/524491060307?text=${encodeURIComponent(message)}`;
 }

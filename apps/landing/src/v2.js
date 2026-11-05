@@ -1,4 +1,4 @@
-const WHATSAPP_NUMBER = '524495411077';
+const WHATSAPP_NUMBER = '524491060307';
 const main = document.querySelector('main');
 const arrow = '<span aria-hidden="true">↗</span>';
 let contactContext = '';

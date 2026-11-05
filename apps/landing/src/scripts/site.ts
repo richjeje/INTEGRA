@@ -41,7 +41,7 @@ const contextLabel = document.querySelector<HTMLElement>('#contact-context')!;
 let contextTimer: ReturnType<typeof setTimeout> | undefined;
 function setContact(context: string, announce = false) {
   clearTimeout(contextTimer);
-  whatsapp.href = 'https://wa.me/524495411077?text=' + encodeURIComponent(`Hola, me interesa ${context}. Quisiera conocer más sobre su servicio.`);
+  whatsapp.href = 'https://wa.me/524491060307?text=' + encodeURIComponent(`Hola, me interesa ${context}. Quisiera conocer más sobre su servicio.`);
   contextLabel.textContent = announce ? `Consulta seleccionada: ${context}. Continúa en WhatsApp.` : '';
   if (announce) contextTimer = setTimeout(() => { contextLabel.textContent = ''; }, 6000);
 }
