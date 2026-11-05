@@ -20,6 +20,16 @@
       "source": "/rent",
       "destination": "/integra-rigging/",
       "permanent": true
+    },
+    {
+      "source": "/met/",
+      "destination": "/integra-steel/",
+      "permanent": true
+    },
+    {
+      "source": "/rent/",
+      "destination": "/integra-rigging/",
+      "permanent": true
     }
   ]
 }

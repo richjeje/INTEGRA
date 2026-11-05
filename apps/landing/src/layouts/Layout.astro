@@ -7,10 +7,15 @@ import Header from '../components/Header.astro';
 import LaserIntro from '../components/LaserIntro.astro';
 interface Props { title?: string; description?: string; brand?: 'integra' | 'met' | 'rent'; }
 const { title = 'Integra | Ingeniería, manufactura y renta de equipo', description = 'Ingeniería e integración industrial, manufactura en metal y renta de equipo en Aguascalientes.', brand = 'integra' } = Astro.props;
+const names = { integra: 'Integra', met: 'Integra Steel', rent: 'Integra Rigging' };
+const baseUrl = 'https://www.integracontroltotal.com';
+const paths = { integra: '/integra/', met: '/integra-steel/', rent: '/integra-rigging/' };
+const canonical = `${baseUrl}${paths[brand]}`;
+const organization = { '@context': 'https://schema.org', '@type': 'Organization', name: 'Integra', url: `${baseUrl}/integra/`, logo: `${baseUrl}/brand/integra-nuevo.png`, telephone: '+52 449 541 1077', address: { '@type': 'PostalAddress', addressLocality: 'Aguascalientes', addressCountry: 'MX' } };
 ---
 <!doctype html>
 <html lang="es">
-  <head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="description" content={description} /><meta name="theme-color" content={brand === 'integra' ? '#CF202E' : '#10243A'} /><meta name="robots" content="noindex, nofollow" /><link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3" /><title>{title}</title></head>
+  <head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="description" content={description} /><meta property="og:type" content="website" /><meta property="og:url" content={canonical} /><meta property="og:locale" content="es_MX" /><meta property="og:site_name" content={names[brand]} /><meta property="og:title" content={title} /><meta property="og:description" content={description} /><meta name="twitter:card" content="summary" /><meta name="twitter:title" content={title} /><meta name="twitter:description" content={description} /><meta name="theme-color" content={brand === 'integra' ? '#CF202E' : '#10243A'} /><link rel="canonical" href={canonical} /><link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3" /><title>{title}</title>{brand === 'integra' && <script type="application/ld+json" set:html={JSON.stringify(organization).replace(/</g, '\\u003c')} />}</head>
   <body data-brand={brand}>
     {brand === 'integra' && <script is:inline>
       (() => {
