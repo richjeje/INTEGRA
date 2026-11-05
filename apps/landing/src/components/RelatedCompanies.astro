@@ -3,8 +3,8 @@ interface Props { brand: 'integra' | 'met' | 'rent'; }
 const { brand } = Astro.props;
 const companies = [
   { id: 'integra', name: 'Integra', href: '/integra/', logo: '/brand/integra-nuevo.png' },
-  { id: 'met', name: 'Integra Steel', href: '/met/', logo: '/brand/integra-steel.png' },
-  { id: 'rent', name: 'Integra Rigging', href: '/rent/', logo: '/brand/integra-rigging.png' },
+  { id: 'met', name: 'Integra Steel', href: '/integra-steel/', logo: '/brand/integra-steel.png' },
+  { id: 'rent', name: 'Integra Rigging', href: '/integra-rigging/', logo: '/brand/integra-rigging.png' },
 ] as const;
 const related = companies.filter(company => company.id !== brand);
 ---

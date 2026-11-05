@@ -4,5 +4,17 @@
   "installCommand": "npm ci",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "trailingSlash": true
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/met",
+      "destination": "/integra-steel/",
+      "permanent": true
+    },
+    {
+      "source": "/rent",
+      "destination": "/integra-rigging/",
+      "permanent": true
+    }
+  ]
 }

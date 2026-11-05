@@ -1,15 +1,25 @@
 {
-    "$schema":  "https://openapi.vercel.sh/vercel.json",
-    "framework":  null,
-    "installCommand":  "npm ci --prefix apps/landing",
-    "buildCommand":  "npm run build --prefix apps/landing",
-    "outputDirectory":  "apps/landing/dist",
-    "trailingSlash":  true,
-    "redirects":  [
-                      {
-                          "destination":  "/integra/",
-                          "permanent":  true,
-                          "source":  "/"
-                      }
-                  ]
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "npm ci --prefix apps/landing",
+  "buildCommand": "npm run build --prefix apps/landing",
+  "outputDirectory": "apps/landing/dist",
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "destination": "/integra/",
+      "permanent": true,
+      "source": "/"
+    },
+    {
+      "source": "/met",
+      "destination": "/integra-steel/",
+      "permanent": true
+    },
+    {
+      "source": "/rent",
+      "destination": "/integra-rigging/",
+      "permanent": true
+    }
+  ]
 }

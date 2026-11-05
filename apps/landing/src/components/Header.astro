@@ -4,12 +4,12 @@ interface Props { brand?: string; }
 const { brand = 'integra' } = Astro.props;
 const paths = [
   { href: '/integra/', label: 'Integra' },
-  { href: '/met/', label: 'Integra Steel' },
-  { href: '/rent/', label: 'Integra Rigging' },
+  { href: '/integra-steel/', label: 'Integra Steel' },
+  { href: '/integra-rigging/', label: 'Integra Rigging' },
 ];
 const currentPath = Astro.url.pathname.replace(/\/?$/, '/');
 const photo = ['integra', 'met'].includes(brand);
-const contactTargets: Record<string, string> = { integra: '/integra/#brief-integra', met: '/met/#brief-met', rent: '/rent/#brief-rent' };
+const contactTargets: Record<string, string> = { integra: '/integra/#brief-integra', met: '/integra-steel/#brief-met', rent: '/integra-rigging/#brief-rent' };
 ---
 <a class="skip-link" href="#contenido">Ir al contenido</a>
 <header class:list={['site-header', { 'site-header--photo': photo, 'site-header--rent': brand === 'rent' }]}>
